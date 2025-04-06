@@ -6,10 +6,12 @@ import {
     DialogPanel,
     DialogTitle,
 } from '@headlessui/react'
+import { useRouter } from "next/navigation";
 
 const GeneratedWithAIDialog = ({ open, handleClose }) => {
     const [topic, setTopic] = useState('')
     const [questionCount, setQuestionCount] = useState(10)
+    const router = useRouter()
 
     // Refs để focus vào input khi có lỗi
     const topicRef = useRef(null)
@@ -26,8 +28,8 @@ const GeneratedWithAIDialog = ({ open, handleClose }) => {
             return
         }
 
-        console.log('Generating AI Quiz with:', { topic, questionCount })
         handleClose()
+        router.push(`/quizz/pre-game-ai?topic=${topic}&questionCount=${questionCount}`)
     }
 
     return (

@@ -14,7 +14,7 @@ const QuizAnswers = ({ questionData, categoryId }) => {
 
     return (
         <div className="flex flex-row gap-2 p-4 overflow-x-auto h-1/2">
-            {questionData.options.map((option, index) => (
+            {questionData?.options?.map((option, index) => (
                 <QuizAnswer
                     key={index}
                     index={index}

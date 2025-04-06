@@ -2,7 +2,7 @@ const express = require("express");
 const route = express.Router();
 const openAIService = require("../services/OpenAIService");
 
-route.get("/openAi", async (req, res) => {
+route.get("/", async (req, res) => {
     console.log("Request received at /openAi endpoint");
     try {
         const { topic, questionCount } = req.query;

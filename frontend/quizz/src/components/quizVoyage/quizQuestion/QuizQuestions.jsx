@@ -10,11 +10,11 @@ const QuizQuestions = ({ questionData, totalQuestion, currentQuestionIndex }) =>
                 <div className="container">
                     <div className="flex flex-row items-center gap-6 justify-center">
                         {/* Hình ảnh */}
-                        {questionData.image && (
+                        {questionData?.image && (
                             <div className="bg-[#09090980] flex items-center justify-center p-4 rounded-lg w-1/4">
                                 <div className="w-1/2 flex items-center justify-center">
                                     <Image
-                                        src={questionData.image}
+                                        src={questionData?.image}
                                         width={200}
                                         height={200}
                                         alt="Biology category"
@@ -26,7 +26,7 @@ const QuizQuestions = ({ questionData, totalQuestion, currentQuestionIndex }) =>
                         {/* Đoạn văn */}
                         <div className="flex items-center justify-center">
                             <h1 className="text-white text-center text-2xl font-bold">
-                                {questionData.question}
+                                {questionData?.question}
                             </h1>
                         </div>
                     </div>

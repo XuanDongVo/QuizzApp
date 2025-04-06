@@ -37,7 +37,6 @@ async function getChatGPTResponse(topic, questionCount) {
 
         // Parse chuỗi thành JSON
         const jsonResponse = JSON.parse(jsonString);
-        console.log("Parsed JSON:", JSON.stringify(jsonResponse, null, 2));
         return jsonResponse;
     } catch (error) {
         console.error("Lỗi khi tạo câu hỏi:", error);
