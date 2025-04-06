@@ -79,6 +79,13 @@
   --sidebar-ring: oklch(0.708 0 0);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  --background-color: #09090933;
+  --background-primary: #8854c0;
+  --color-question-1:#2d70ae;
+  --color-question-2: #2d9da6;
+  --color-question-3:#efa929;
+  --color-question-4:#d5546d;
+  --color-question-5:#9a4292
 }
 
 .dark {

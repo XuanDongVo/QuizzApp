@@ -11,7 +11,7 @@ const QuizAnswer = ({
     selectedOption,
     setSelectedOption,
 }) => {
-    const colors = ["#2d70ae", "#2d9da6", "#efa929", "#d5546d", "#9a4292"];
+    const colors = ["var(--color-question-1)", "var(--color-question-2)", "var(--color-question-3)", "var(--color-question-4)", "var(--color-question-5)"];
     const { increaseScore, nextQuestion, showAnswer, setShowAnswer, handleAnswerClick } = useQuizContext();
 
     const isSelected = selectedOption === option;

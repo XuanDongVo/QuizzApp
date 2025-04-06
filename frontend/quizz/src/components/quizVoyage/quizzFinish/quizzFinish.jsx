@@ -281,7 +281,7 @@ const QuizzFinish = () => {
 
                 {/* Buttons */}
                 <div className="mt-6 space-y-3">
-                    <button className="w-full bg-purple-600 text-white py-3 rounded-lg font-semibold hover:bg-purple-700">
+                    <button className="w-full bg-[var(--background-color)] text-white py-3 rounded-lg font-semibold hover:bg-purple-700">
                         Play again
                     </button>
                     <button className="w-full bg-white text-black py-3 rounded-lg font-semibold hover:bg-gray-200">

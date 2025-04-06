@@ -1,48 +1,48 @@
-const puppeteer = require("puppeteer");
-const fs = require("fs");
+const { GoogleGenAI } = require('@google/genai');
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
+const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
 async function getChatGPTResponse(topic, questionCount) {
     try {
-        const browser = await puppeteer.launch({ headless: false }); // Mở trình duyệt (bỏ headless để thấy UI)
-        const page = await browser.newPage();
+        const prompt = `
+            Tạo ${questionCount} câu hỏi liên quan đến chủ đề "${topic}". 
+            Mỗi câu hỏi phải có 5 đáp án (options), trong đó chỉ có 1 đáp án đúng. 
+            Trả về kết quả dưới dạng JSON với cấu trúc sau:
+            {
+                "name": "${topic}",
+                "questions": [
+                    {
+                        "question": "Nội dung câu hỏi",
+                        "options": ["đáp án 1", "đáp án 2", "đáp án 3", "đáp án 4", "đáp án 5"],
+                        "correctAnswer": "đáp án đúng"
+                    },
+                    ...
+                ]
+            }
+        `;
 
-        // Đọc cookie từ file JSON
-        const cookies = JSON.parse(fs.readFileSync("e:/Quizz/backend/Quizz/chatgpt.com.json", "utf-8"));
-        await page.setCookie(...cookies);
-
-        // Truy cập vào ChatGPT
-        await page.goto("https://chat.openai.com/");
-
-        // Đợi trang tải xong
-        await new Promise(resolve => setTimeout(resolve, 10000));
-
-        // Tạo prompt
-        const prompt = `Hãy đưa ra ${questionCount} câu hỏi liên quan đến chủ đề "${topic}". Mỗi câu hỏi có 4 phương án và 1 đáp án đúng. Trả về dưới dạng JSON.`;
-
-        // Nhập prompt vào textarea
-        await page.type('textarea', prompt);
-
-        // Gửi prompt (ấn Enter)
-        await page.keyboard.press("Enter");
-
-        // Đợi ChatGPT phản hồi
-        await new Promise(resolve => setTimeout(resolve, 50000));
-
-        // Lấy nội dung phản hồi
-        const response = await page.evaluate(() => {
-            let elements = document.querySelectorAll(".markdown");
-            return elements.length > 0 ? elements[elements.length - 1].innerText : "";
+        const response = await ai.models.generateContent({
+            model: 'gemini-2.0-flash-001',
+            contents: prompt
         });
 
-        // Đóng trình duyệt
-        await browser.close();
-        return response;
+        // Giả sử response.text chứa JSON dạng chuỗi, parse nó
+        console.log("Response from AI:", response.text);
+        // Loại bỏ ```json và ``` nếu có
+        let jsonString = response.text
+            .replace(/```json/g, '') // Xóa ```json
+            .replace(/```/g, '')     // Xóa ```
+            .trim();                 // Xóa khoảng trắng thừa
+
+        // Parse chuỗi thành JSON
+        const jsonResponse = JSON.parse(jsonString);
+        console.log("Parsed JSON:", JSON.stringify(jsonResponse, null, 2));
+        return jsonResponse;
     } catch (error) {
-        console.error("Error in getChatGPTResponse:", error);
-        throw new Error("Failed to get response from ChatGPT");
+        console.error("Lỗi khi tạo câu hỏi:", error);
+        throw new Error("Failed to generate questions from AI service");
     }
 }
 
-module.exports = {
-    getChatGPTResponse,
-};
+module.exports = { getChatGPTResponse };

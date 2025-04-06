@@ -3,11 +3,25 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { categories } from "@/dataFake";
 import Link from "next/link";
-import { use } from 'react'
+import { use, useEffect } from 'react'
+import { useQuizContext } from "@/context/quizzContext";
 
 export default function page({ params }) {
+    const { quizData, setQuizData, resetQuiz } = useQuizContext();
     const { categoryId } = use(params);
-    const category = categories.find((category) => category.id === Number(categoryId));
+
+    useEffect(() => {
+        const category = categories.find((category) => category.id === Number(categoryId));
+        if (category) {
+            resetQuiz();
+            setQuizData(category);
+
+        }
+    }, [categoryId]);
+
+    if (!quizData) {
+        return <div className="text-white text-center pt-10">Đang tải dữ liệu...</div>;
+    }
 
     return (
         <div className="relative h-screen">
@@ -17,16 +31,16 @@ export default function page({ params }) {
                         {/* Ten tro choi */}
                         <div className=" bg-gradient-to-t from-[#ffffff14] to-[#ffffff0a] rounded-lg p-5">
                             <div className="flex gap-7 ">
-                                <img src={category.image} className="w-20 h-20" />
+                                <img src={quizData.image} className="w-20 h-20" />
                                 <div className="flex flex-col justify-center">
-                                    <h1 className="text-2xl text-white ">{category.name}</h1>
-                                    <p className="text-white font-light opacity-75">{category.questions.length} câu hỏi</p>
+                                    <h1 className="text-2xl text-white ">{quizData.name}</h1>
+                                    <p className="text-white font-light opacity-75">{quizData.questions.length} câu hỏi</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Nut choi */}
-                        <div className="bg-[#09090933] rounded-lg p-5 ">
+                        <div className="bg-[var(--background-color)] rounded-lg p-5 ">
                             <div className="flex flex-col gap-5 alight-center justify-center">
                                 {/* tien trinh game */}
                                 <div >
@@ -36,10 +50,10 @@ export default function page({ params }) {
                                         <p className="text-white text-[10px] font-medium">End</p>
                                     </div>
                                 </div>
-                                <div className="text-[18px] font-bold text-white text-center">{category.questions.length} câu hỏi chuẩn bị</div>
+                                <div className="text-[18px] font-bold text-white text-center">{quizData.questions.length} câu hỏi chuẩn bị</div>
 
                                 <Button variant="success">
-                                    <Link href={`/quizz/game/${category.id}`}>
+                                    <Link href={`/quizz/game`}>
                                         <div className="text-white text-center font-bold">
                                             Start Game
                                         </div>

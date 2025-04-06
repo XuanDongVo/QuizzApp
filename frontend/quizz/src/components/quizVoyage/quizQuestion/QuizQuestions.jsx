@@ -6,7 +6,7 @@ const QuizQuestions = ({ questionData, totalQuestion, currentQuestionIndex }) =>
         <div
             className="h-1/2 w-full flex flex-col items-center justify-center p-2 relative"
         >
-            <div className="bg-[#09090961] w-full h-full flex items-center justify-center  rounded-lg">
+            <div className="bg-[var(--background-color)] w-full h-full flex items-center justify-center  rounded-lg">
                 <div className="container">
                     <div className="flex flex-row items-center gap-6 justify-center">
                         {/* Hình ảnh */}

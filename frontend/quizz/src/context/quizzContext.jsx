@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 const QuizContext = createContext();
 
 export const QuizProvider = ({ children }) => {
+    const [quizData, setQuizData] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
     const [showAnswer, setShowAnswer] = useState(false);
@@ -32,9 +33,19 @@ export const QuizProvider = ({ children }) => {
         } else {
             setCurrentQuestionIndex(0);
             setShowAnswer(false);
-            router.push(`/quizz/game-finnish/${categoryId}`);
+            router.push(`/quizz/game-finnish`);
         }
     };
+
+    const resetQuiz = () => {
+        setScore(0);
+        setCurrentQuestionIndex(0);
+        setShowAnswer(false);
+        setAnswerCorrect(0);
+        setAnswerIncorrect(0);
+        setQuizData(null);
+    };
+
 
     return (
         <QuizContext.Provider
@@ -47,7 +58,10 @@ export const QuizProvider = ({ children }) => {
                 nextQuestion,
                 handleAnswerClick,
                 answerCorrect,
-                answerIncorrect
+                answerIncorrect,
+                quizData,
+                setQuizData,
+                resetQuiz
 
             }}
         >
