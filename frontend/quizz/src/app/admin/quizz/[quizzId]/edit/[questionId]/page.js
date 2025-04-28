@@ -2,12 +2,21 @@
 import { use } from 'react';
 import QuizzEdit from '@/components/quizzCreated/QuizzEdit';
 import { useQuizContext } from '@/context/createdQuizzContext';
-export default function page({ params }) {
+import { useRouter } from 'next/navigation';
+
+export default function Page({ params }) {
+    const { quizzId } = use(params);
     const { questions } = useQuizContext()
     const { questionId } = use(params);
 
-    const question = questions.find((item) => item.id === parseInt(questionId, 10));
-    console.log('question', question)
+    const router = useRouter()
 
-    return <QuizzEdit question={question} />;
+    const question = questions.find((item) => item.id === parseInt(questionId, 10));
+
+    const handleSubmit = () => {
+        router.push(`/admin/quizz/${quizzId}/main`)
+    };
+
+
+    return <QuizzEdit question={question} onClick={handleSubmit} />;
 }

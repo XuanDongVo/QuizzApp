@@ -3,10 +3,10 @@ import { useRef, useState } from 'react';
 import { useQuizContext } from '@/context/createdQuizzContext';
 import { useRouter } from 'next/navigation';
 
-const QuizzEdit = ({ quizzId, question }) => {
+const QuizzEdit = ({ quizzId, question, onClick }) => {
     const router = useRouter();
-    const { addQuestion } = useQuizContext();
-    const questionRef = useRef()
+    const { addQuestion, updateQuestion } = useQuizContext();
+    const questionRef = useRef();
 
     const colors = [
         "var(--color-question-1)",
@@ -17,7 +17,8 @@ const QuizzEdit = ({ quizzId, question }) => {
     ];
     const [currentQuestion, setQuestion] = useState(question?.question || '');
     const [answers, setAnswers] = useState(question?.answers || ['', '']);
-    const [correctAnswer, setCorrectAnswer] = useState(question?.correctAnswer[0] || '');
+    const [correctAnswer, setCorrectAnswer] = useState(question?.correctAnswer?.[0] || ''); // Lấy giá trị đầu tiên từ mảng correctAnswer
+    const [questionError, setQuestionError] = useState(false);
 
     const handleAnswerChange = (index, value) => {
         const newAnswers = [...answers];
@@ -37,21 +38,36 @@ const QuizzEdit = ({ quizzId, question }) => {
 
     const handleSavedQuestion = () => {
         if (!currentQuestion.trim()) {
-            questionRef.current?.focus()
-            return
+            setQuestionError(true);
+            questionRef.current?.focus();
+            return;
         }
 
+        setQuestionError(false);
+
         if (currentQuestion && correctAnswer && answers.length >= 2) {
-            addQuestion({ currentQuestion, answers, correctAnswer: [correctAnswer] });
-            router.push(`main`)
+            const updatedData = {
+                question: currentQuestion,
+                answers,
+                correctAnswer: [correctAnswer], // Đảm bảo correctAnswer là mảng
+            };
+
+            if (question) {
+                // Nếu đang chỉnh sửa, gọi updateQuestion
+                updateQuestion(question.id, updatedData);
+            } else {
+                // Nếu tạo mới, gọi addQuestion
+                addQuestion({ currentQuestion, answers, correctAnswer: [correctAnswer] });
+            }
+
+            onClick();
         }
-    }
+    };
 
     const removeAnswer = (index) => {
         if (answers.length > 2) {
             const newAnswers = answers.filter((_, i) => i !== index);
             setAnswers(newAnswers);
-            // Nếu đáp án bị xóa là đáp án đúng, reset correctAnswer
             if (answers[index] === correctAnswer) {
                 setCorrectAnswer('');
             }
@@ -59,35 +75,44 @@ const QuizzEdit = ({ quizzId, question }) => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col p-6">
+        <div className="min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 flex flex-col">
             {/* Header */}
-            <div className="w-full max-w-5xl mx-auto mb-6">
-                <div className="flex justify-between items-center">
-                    <div className="text-lg font-semibold">Single Choice</div>
-                    <div className="flex space-x-2">
-                        <button className="px-4 py-2 bg-purple-600 text-white rounded" onClick={handleSavedQuestion}>
-                            SAVE QUESTION
-                        </button>
-                    </div>
+            <header className="w-full bg-white shadow-md p-4 sticky top-0 z-10">
+                <div className="max-w-6xl mx-auto flex flex-col sm:flex-row sm:justify-between items-center gap-4">
+                    <h1 className="text-xl sm:text-2xl font-bold text-gray-800">
+                        {question ? 'Edit Question' : 'Create Single Choice Question'}
+                    </h1>
+                    <button
+                        className="px-6 py-2 bg-[var(--background-primary)] text-white rounded-lg shadow-md hover:bg-[var(--background-primary)]/80 transition duration-300 cursor-pointer"
+                        onClick={handleSavedQuestion}
+                    >
+                        Save Question
+                    </button>
                 </div>
-            </div>
+            </header>
 
             {/* Centered Question Editor */}
-            <div className="flex-1 flex items-center justify-center">
-                <div className="w-full max-w-5xl">
+            <div className="flex-1 flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8">
+                <div className="w-full max-w-6xl bg-white rounded-xl shadow-lg p-6 sm:p-8">
                     {/* Question Editor */}
-                    <div className="bg-[#461a42] rounded-lg p-6">
-                        <div className="border-1 border-white text-white p-8 rounded-lg flex items-center justify-center">
+                    <div className="bg-[#461a42] rounded-lg p-4 sm:p-6">
+                        <div
+                            className={`border-1 text-white p-6 sm:p-8 rounded-lg flex items-center justify-center ${questionError ? 'border-red-500' : 'border-white'
+                                }`}
+                        >
                             <input
                                 type="text"
-                                placeholder="Type question here"
+                                placeholder="Type your question here"
                                 ref={questionRef}
                                 value={currentQuestion}
-                                onChange={(e) => setQuestion(e.target.value)}
-                                className="bg-transparent text-center text-xl outline-none w-full max-w-5xl placeholder-gray-400"
+                                onChange={(e) => {
+                                    setQuestion(e.target.value);
+                                    setQuestionError(false);
+                                }}
+                                className="bg-transparent text-center text-lg sm:text-xl outline-none w-full max-w-4xl placeholder-gray-400"
                             />
                         </div>
-                        <div className="grid grid-cols-2 gap-6 pt-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-6">
                             {answers.map((answer, index) => (
                                 <div
                                     key={index}
@@ -103,12 +128,12 @@ const QuizzEdit = ({ quizzId, question }) => {
                                             placeholder="Type answer option here"
                                             value={answer}
                                             onChange={(e) => handleAnswerChange(index, e.target.value)}
-                                            className="w-full h-full p-4 rounded-lg text-white bg-transparent outline-none placeholder-gray-300 text-center text-lg"
+                                            className="w-full h-full p-4 rounded-lg text-white bg-transparent outline-none placeholder-gray-300 text-center text-base sm:text-lg"
                                         />
                                         <button
                                             onClick={() => handleCorrectAnswerChange(answer)}
                                             className={`absolute top-4 left-4 p-1 rounded-full border-1 border-white ${correctAnswer === answer ? 'text-green-400' : 'text-gray-300'
-                                                } hover:text-green-500 transition-colors duration-300`}
+                                                } hover:text-green-500 transition-colors duration-300 cursor-pointer`}
                                             disabled={!answer}
                                         >
                                             <svg
@@ -129,7 +154,7 @@ const QuizzEdit = ({ quizzId, question }) => {
                                         {answers.length > 2 && (
                                             <button
                                                 onClick={() => removeAnswer(index)}
-                                                className="absolute top-4 right-4 text-gray-300 hover:text-red-500  "
+                                                className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer"
                                             >
                                                 <svg
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -157,7 +182,7 @@ const QuizzEdit = ({ quizzId, question }) => {
                         </div>
                         {answers.length < 5 && (
                             <div className="flex justify-center p-4" onClick={addAnswer}>
-                                <button className="px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700 transition duration-300 hover:cursor-pointer">
+                                <button className="px-4 py-2 text-white bg-[var(--background-primary)] rounded hover:bg-[var(--background-primary)]/80 transition duration-300 cursor-pointer">
                                     + Add answer option
                                 </button>
                             </div>

@@ -1,4 +1,3 @@
-// context/createdQuizzContext.js
 'use client';
 import React, { createContext, useContext, useState } from 'react';
 
@@ -14,10 +13,10 @@ export const CreatedQuizzProvider = ({ children }) => {
         },
     ]);
 
-    const addQuestion = ({ answers, correctAnswer }) => {
+    const addQuestion = ({ currentQuestion, answers, correctAnswer }) => {
         const newQuestion = {
             id: questions.length + 1,
-            question: `Question ${questions.length + 1}`,
+            question: currentQuestion,
             answers: answers,
             correctAnswer: correctAnswer,
         };
@@ -27,7 +26,9 @@ export const CreatedQuizzProvider = ({ children }) => {
     // Hàm chỉnh sửa câu hỏi
     const updateQuestion = (id, updatedQuestion) => {
         setQuestions(
-            questions.map((q) => (q.id === id ? { ...q, ...updatedQuestion } : q))
+            questions.map((q) =>
+                q.id === id ? { ...q, ...updatedQuestion } : q
+            )
         );
     };
 
@@ -43,6 +44,7 @@ export const CreatedQuizzProvider = ({ children }) => {
                 addQuestion,
                 updateQuestion,
                 deleteQuestion,
+
             }}
         >
             {children}
@@ -50,4 +52,4 @@ export const CreatedQuizzProvider = ({ children }) => {
     );
 };
 
-export const useQuizContext = () => useContext(CreatedQuizzContext);
+export const createdQuizContext = () => useContext(CreatedQuizzContext);
