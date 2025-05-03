@@ -1,6 +1,6 @@
 const express = require("express");
 const route = express.Router();
-const openAIService = require("../services/OpenAIService");
+const openAIService = require("../services/openAIService");
 
 route.get("/", async (req, res) => {
     console.log("Request received at /openAi endpoint");
