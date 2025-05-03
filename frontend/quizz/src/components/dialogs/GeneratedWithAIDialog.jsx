@@ -7,8 +7,9 @@ import {
     DialogTitle,
 } from '@headlessui/react';
 import { useRouter } from "next/navigation";
-import { createdQuizContext } from '@/context/createdQuizzContext'; // Cập nhật đúng path
-import { openAiGenerated } from '@/serivce/openApiService'; // Cập nhật đúng path
+import { useCreatedQuizzContext } from '@/context/createdQuizzContext';
+import { openAiGenerated } from '@/serivce/openApiService';
+import { createdQuizz } from '@/serivce/quizz';
 
 const GeneratedWithAIDialog = ({ open, handleClose }) => {
     const [topic, setTopic] = useState('');
@@ -17,7 +18,7 @@ const GeneratedWithAIDialog = ({ open, handleClose }) => {
     const [error, setError] = useState(null);
 
     const router = useRouter();
-    const { setQuestions } = createdQuizContext();
+    const { addQuestion } = useCreatedQuizzContext();
 
     const topicRef = useRef(null);
     const countRef = useRef(null);
@@ -37,16 +38,35 @@ const GeneratedWithAIDialog = ({ open, handleClose }) => {
         setError(null);
 
         try {
-            const response = await openAiGenerated(topic, questionCount);
-            setQuestions(response.data.data);
-            handleClose();
-            router.push('/quizz/pre-game-ai');
+            await createQuizAndAddQuestions(topic, questionCount);
         } catch (err) {
             setError(err.message || 'Có lỗi xảy ra. Vui lòng thử lại.');
         } finally {
             setLoading(false);
         }
     };
+
+
+    const createQuizAndAddQuestions = async (topic, questionCount) => {
+        // Bước 1: Lấy câu hỏi từ AI
+        const response = await openAiGenerated(topic, questionCount);
+        // Bước 2: Tạo quiz mới
+        const quizResponse = await createdQuizz(topic.trim());
+        const quizzId = quizResponse.data.id;
+        // Bước 3: Duyệt qua các câu hỏi từ AI và thêm vào quizz
+        for (let question of response.data.data.questions) {
+            await addQuestion({
+                currentQuestion: question.question,
+                answers: question.options,
+                correctAnswer: [question.correctAnswer],
+                quizzId
+            });
+        }
+
+        setTopic('');
+        router.push(`/admin/quizz/${quizzId}/main`);
+    };
+
 
     return (
         <Dialog open={open} onClose={handleClose} className="relative z-10">

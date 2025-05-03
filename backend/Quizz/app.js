@@ -13,14 +13,16 @@ const START_SERVER = () => {
   }));
 
   // Import routes
-  const topicRoute = require("./src/routes/topic");
+  // const topicRoute = require("./src/routes/topic");
   const questionRoute = require("./src/routes/question");
   const openAiRoute = require("./src/routes/openAi");
+  const quizzRoute = require("./src/routes/quizz");
 
   // Sử dụng routes
-  app.use("/topic", topicRoute);
+  // app.use("/topic", topicRoute);
   app.use("/question", questionRoute);
   app.use("/openai", openAiRoute);
+  app.use("/quizz", quizzRoute);
 
   // Start server
   const PORT = process.env.PORT || 3000;

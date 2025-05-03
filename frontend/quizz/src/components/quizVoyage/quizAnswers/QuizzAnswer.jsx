@@ -10,6 +10,8 @@ const QuizAnswer = ({
     totalQuestions,
     selectedOption,
     setSelectedOption,
+    quizzId,
+    isPreview,
 }) => {
     const colors = ["var(--color-question-1)", "var(--color-question-2)", "var(--color-question-3)", "var(--color-question-4)", "var(--color-question-5)"];
     const { increaseScore, nextQuestion, showAnswer, setShowAnswer, handleAnswerClick } = useQuizContext();
@@ -27,6 +29,7 @@ const QuizAnswer = ({
         }
     }
 
+
     const onAnswerClick = () => {
         if (!selectedOption) {
             setSelectedOption(option);
@@ -34,12 +37,12 @@ const QuizAnswer = ({
             if (isCorrect) {
                 increaseScore();
                 setTimeout(() => {
-                    nextQuestion(totalQuestions, categoryId);
+                    nextQuestion(totalQuestions, categoryId, isPreview, quizzId);
                 }, 1500);
             } else {
                 setShowAnswer(true); // Hiển thị đáp án đúng khi chọn sai
                 setTimeout(() => {
-                    nextQuestion(totalQuestions, categoryId);
+                    nextQuestion(totalQuestions, categoryId, isPreview, quizzId);
                 }, 2000);
             }
         }

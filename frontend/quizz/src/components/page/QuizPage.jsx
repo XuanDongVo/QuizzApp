@@ -3,7 +3,7 @@ import QuizAnswers from "@/components/quizVoyage/quizAnswers/QuizAnswers";
 import QuizQuestions from "@/components/quizVoyage/quizQuestion/QuizQuestions";
 import { useQuizContext } from "@/context/quizzContext";
 
-export default function QuizPage({ quizData }) {
+export default function QuizPage({ quizData, quizzId, isPreview }) {
     const { currentQuestionIndex } = useQuizContext();
 
     return (
@@ -12,13 +12,16 @@ export default function QuizPage({ quizData }) {
             style={{ backgroundImage: 'url(https://cf.quizizz.com/themes/v2/classic/bg_image.jpg)' }}
         >
             <QuizQuestions
-                questionData={quizData.questions[currentQuestionIndex]}
-                totalQuestion={quizData.questions.length}
+                questionData={quizData?.questions[currentQuestionIndex]}
+                totalQuestion={quizData?.questions?.length}
                 currentQuestionIndex={currentQuestionIndex}
             />
             <QuizAnswers
-                questionData={quizData.questions[currentQuestionIndex]}
+                questionData={quizData?.questions[currentQuestionIndex]}
                 categoryId={quizData}
+                quizzId={quizzId}
+                isPreview={isPreview}
+                totalQuestion={quizData?.questions?.length}
             />
         </div>
     );

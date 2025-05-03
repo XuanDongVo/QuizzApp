@@ -1,5 +1,4 @@
 'use client';
-
 import QuizzEdit from "@/components/quizzCreated/QuizzEdit";
 import { use } from 'react'
 import { useRouter } from 'next/navigation';
@@ -10,7 +9,7 @@ export default function Page({ params }) {
     const { quizzId } = use(params);
 
     const handleSubmit = () => {
-        router.push(`/admin/quizz/${quizzId}/main`)
+        router.back()
     };
 
     return (

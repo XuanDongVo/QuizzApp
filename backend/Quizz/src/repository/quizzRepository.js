@@ -1,27 +1,41 @@
 const { ObjectId } = require("mongodb");
 const { GET_DB } = require("../config/mongoConfig");
 
-// Khởi tạo một quizz mới
-const createdQuizz = async () => {
+const getQuizzById = async (quizzId) => {
     const db = GET_DB();
-    const newQuizz = {
-        _id: new ObjectId()
-    };
-    await db.collection("quizz").insertOne(newQuizz);
-    return newQuizz._id;
+    const quizz = await db.collection("quizz").findOne({ _id: new ObjectId(quizzId) });
+    return quizz;
 };
 
+
+// Tạo quizz mới
+const createdQuizz = async (name) => {
+    const db = GET_DB();
+    const newQuizz = {
+        name: name,
+    };
+    const result = await db.collection("quizz").insertOne(newQuizz);
+    return {
+        id: result.insertedId,
+        name: newQuizz.name
+    };
+};
+
+
 // Cập nhật Quizz
-const updateQuizzById = async (quizzId, quizz) => {
+const updateQuizzById = async (quizzId, newQuestions) => {
     const db = GET_DB();
     const result = await db.collection("quizz").updateOne(
-        { _id: quizzId },
-        { $set: quizz }
+        { _id: new ObjectId(quizzId) },
+        { $set: { questions: newQuestions } }
     );
+
     return result;
 };
+
 
 module.exports = {
     createdQuizz,
     updateQuizzById,
+    getQuizzById
 };

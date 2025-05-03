@@ -6,10 +6,15 @@ import {
     DialogPanel,
     DialogTitle,
 } from '@headlessui/react';
+import { useRouter } from 'next/navigation';
+import { ChevronLeft } from 'lucide-react';
+import { useCreatedQuizzContext } from '@/context/createdQuizzContext';
 
 const QuizzHeader = () => {
+    const { quizz, setQuizz } = useCreatedQuizzContext();
     const [isOpen, setIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const router = useRouter();
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -19,10 +24,26 @@ const QuizzHeader = () => {
         }
     };
 
+    const handleBack = () => {
+        router.push('/admin/dashboard')
+    };
+
+    const handlePreview = () => {
+        router.push('preview');
+    }
+
     return (
         <>
-            <div className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl font-bold">UNTITLED QUIZ</h1>
+            <div className="flex justify-between items-center  bg-white p-3">
+                <div className="flex items-center space-x-3">
+                    <button
+                        onClick={handleBack}
+                        className="px-2 py-1  hover:bg-gray-300 hover:cursor-pointer rounded transition text-sm font-semibold border-2"
+                    >
+                        <ChevronLeft />
+                    </button>
+                    <h1 className="text-2xl font-bold">{quizz?.name}</h1>
+                </div>
                 <div className="space-x-2">
                     <button
                         onClick={() => setIsOpen(true)}
@@ -30,7 +51,7 @@ const QuizzHeader = () => {
                     >
                         SETTINGS
                     </button>
-                    <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded transition">
+                    <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded transition" onClick={handlePreview}>
                         PREVIEW
                     </button>
                     <button className="px-4 py-2 bg-[#8854c0] text-white rounded hover:bg-[#7a49b0] transition">
@@ -56,7 +77,8 @@ const QuizzHeader = () => {
                                     <label className="block font-semibold">Name</label>
                                     <input
                                         className="w-full border rounded px-4 py-2 mt-1 border-red-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                        placeholder="Untitled Quiz"
+                                        placeholder="Untitled Quiz" value={quizz?.name || ""}
+                                        onChange={(e) => setQuizInfo({ ...quizz, name: e.target.value })}
                                     />
                                     <p className="text-red-500 text-sm mt-1">
                                         Name should be at least 4 characters long

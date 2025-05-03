@@ -3,13 +3,13 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { categories } from "@/dataFake";
 import Link from "next/link";
-import Image from "next/image"; // Thêm import Image từ next/image
-import { useEffect } from 'react' // Bỏ import use vì không cần thiết
+import Image from "next/image";
+import { useEffect, use } from 'react'
 import { useQuizContext } from "@/context/quizzContext";
 
 export default function Page({ params }) {
     const { quizData, setQuizData, resetQuiz } = useQuizContext();
-    const { categoryId } = params;
+    const { categoryId } = use(params);
 
     useEffect(() => {
         const category = categories.find((category) => category.id === Number(categoryId));
