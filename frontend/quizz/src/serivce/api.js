@@ -1,8 +1,12 @@
 import axios from 'axios';
 
+
+
+const baseUrl = process.env.NEXT_PUBLIC_BUILD_MODE === 'production' ? process.env.NEXT_PUBLIC_CLIENT_URL : 'http://localhost:4000';
+
 // Tạo instance axios với baseURL là API route
 export const api = axios.create({
-    baseURL: '/',
+    baseURL: baseUrl,
     withCredentials: true,
 });
 
