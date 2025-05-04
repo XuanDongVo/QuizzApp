@@ -30,7 +30,7 @@ CONNECT_DB()
   .then(() => {
     console.log("Connected to database");
     app.listen(PORT, () => {
-      console.log(`Server is running on ${process.env.BUILD_MODE === "production" ? "Production" : "Development"} mode at http://localhost:${PORT}`);
+      console.log(`Server is running on ${process.env.BUILD_MODE === "production" ? "Production" : "Development"} mode at PORT:${PORT}`);
     });
   })
   .catch((error) => {
