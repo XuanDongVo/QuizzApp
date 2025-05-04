@@ -1,6 +1,6 @@
-require("dotenv").config();
+
 WHITELIST_DOMAINS = ["http://localhost:3000", process.env.CLIENT_URL]
-export const corsOptions = {
+const corsOptions = {
     origin: function (origin, callback) {
         if (!origin && process.env.BUILD_MODE === 'dev') {
             return callback(null, true)
@@ -15,4 +15,7 @@ export const corsOptions = {
     credentials: true
 }
 
-module.exports = corsOptions;
+
+module.exports = {
+    corsOptions
+};

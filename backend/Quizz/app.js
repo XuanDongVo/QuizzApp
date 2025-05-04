@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const { CONNECT_DB } = require("./src/config/mongoConfig");
-const corsOptions = require("./src/config/cors");
+const { corsOptions } = require("./src/config/cors");
 // Middleware
 app.use(express.json());
 app.use(cors(corsOptions));
