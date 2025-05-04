@@ -17,9 +17,16 @@ const api = axios.create({
 // Xử lý yêu cầu từ client-side
 export default async function handler(req, res) {
     try {
+        // Log để kiểm tra URL gốc
+        console.log('Original req.url:', req.url);
+
+        // Loại bỏ phần "/api/proxy" khỏi URL một cách chính xác
+        const cleanedUrl = req.url.replace(/^\/api\/proxy\/?/, '/'); // Đảm bảo loại bỏ "/api/proxy" và giữ lại phần còn lại
+        console.log('Cleaned URL:', cleanedUrl);
+
         // Chuyển tiếp yêu cầu từ client-side đến API thực tế
         const response = await api.request({
-            url: req.url.replace('/api/proxy', ''), // Loại bỏ phần "/api/proxy" khỏi URL
+            url: cleanedUrl, // Sử dụng URL đã được làm sạch
             method: req.method, // GET, POST, v.v.
             data: req.body, // Dữ liệu từ client (nếu có)
             headers: {
@@ -29,6 +36,7 @@ export default async function handler(req, res) {
         });
         res.status(response.status).json(response.data);
     } catch (error) {
+        console.error('Proxy error:', error.message);
         res.status(error.response?.status || 500).json({ error: error.message });
     }
 }
