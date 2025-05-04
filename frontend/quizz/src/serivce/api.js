@@ -1,14 +1,12 @@
 import axios from 'axios';
 
-console.log('Environment Variables:', process.env);
-const baseUrl = process.env.BUILD_MODE === 'production' ? process.env.CLIENT_URL : 'http://localhost:4000';
-console.log('Base URL:', baseUrl);
-
+// Tạo instance axios với baseURL là API route
 export const api = axios.create({
-    baseURL: baseUrl,
+    baseURL: '/api/proxy', // Gọi qua API route trên server-side
     withCredentials: true,
 });
 
+// Giữ nguyên interceptor để xử lý token
 api.interceptors.request.use(
     (config) => {
         if (typeof window !== 'undefined') {
@@ -25,6 +23,7 @@ api.interceptors.request.use(
     }
 );
 
+// Giữ nguyên interceptor để xử lý lỗi 401/403
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
