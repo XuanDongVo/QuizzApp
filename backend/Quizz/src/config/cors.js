@@ -1,5 +1,5 @@
 require("dotenv").config();
-WHITELIST_DOMAINS = ["http://localhost:3000", "https://quizz-cq21ps6af-xuan-dongs-projects.vercel.app"]
+WHITELIST_DOMAINS = ["http://localhost:3000", process.env.CLIENT_URL]
 export const corsOptions = {
     origin: function (origin, callback) {
         if (!origin && process.env.BUILD_MODE === 'dev') {
