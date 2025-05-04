@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Tạo instance axios với baseURL là API route
 export const api = axios.create({
-    baseURL: '/api/proxy', // Gọi qua API route trên server-side
+    baseURL: '/',
     withCredentials: true,
 });
 
