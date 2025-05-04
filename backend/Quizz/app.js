@@ -3,15 +3,10 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const { CONNECT_DB } = require("./src/config/mongoConfig");
-
+const corsOptions = require("./src/config/cors");
 // Middleware
 app.use(express.json());
-app.use(cors({
-  origin: process.env.BUILD_MODE === "production"
-    ? process.env.CLIENT_URL
-    : "http://localhost:3000",
-  credentials: true,
-}));
+app.use(cors(corsOptions));
 
 // Import routes
 const questionRoute = require("./src/routes/question");
