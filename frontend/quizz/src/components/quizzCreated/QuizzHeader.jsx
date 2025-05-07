@@ -9,6 +9,7 @@ import {
 import { useRouter } from 'next/navigation';
 import { ChevronLeft } from 'lucide-react';
 import { useCreatedQuizzContext } from '@/context/createdQuizzContext';
+import { updateQuizzPublishStatus } from '@/serivce/quizz';
 
 const QuizzHeader = () => {
     const { quizz, setQuizz } = useCreatedQuizzContext();
@@ -25,12 +26,23 @@ const QuizzHeader = () => {
     };
 
     const handleBack = () => {
-        router.push('/admin/dashboard')
+        router.back();
     };
 
     const handlePreview = () => {
         router.push('preview');
     }
+
+    const togglePublish = async () => {
+        const newPublishStatus = !quizz?.publish;
+        console.log('Toggling publish status to:', newPublishStatus);
+        const response = await updateQuizzPublishStatus(quizz?._id, newPublishStatus);
+        if (response.status === 200) {
+            setQuizz({ ...quizz, publish: newPublishStatus });
+        } else {
+            console.error('Failed to update publish status:', response.statusText);
+        }
+    };
 
     return (
         <>
@@ -54,8 +66,14 @@ const QuizzHeader = () => {
                     <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded transition" onClick={handlePreview}>
                         PREVIEW
                     </button>
-                    <button className="px-4 py-2 bg-[#8854c0] text-white rounded hover:bg-[#7a49b0] transition">
-                        PUBLISH
+                    <button
+                        onClick={togglePublish}
+                        className={`px-4 py-2 rounded transition font-semibold ${quizz?.publish
+                            ? 'bg-purple-400 text-white hover:bg-purple-500'
+                            : 'bg-[#8854c0] text-white hover:bg-[#7a49b0]'
+                            }`}
+                    >
+                        {quizz?.publish ? 'UNPUBLISH' : 'PUBLISH'}
                     </button>
                 </div>
             </div>

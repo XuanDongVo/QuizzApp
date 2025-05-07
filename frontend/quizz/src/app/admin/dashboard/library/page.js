@@ -20,9 +20,6 @@ export default function Page() {
                 const publishedResponse = await getQuizzesByPublishStatus(true);
                 const notPublishedResponse = await getQuizzesByPublishStatus(false);
 
-                console.log('Published Quizzes:', publishedResponse);
-                console.log('Not Published Quizzes:', notPublishedResponse);
-
                 setPublishedQuizzes(publishedResponse.data || []);
                 setNotPublishedQuizzes(notPublishedResponse.data || []);
             } catch (err) {
@@ -36,14 +33,22 @@ export default function Page() {
         fetchQuizzes();
     }, []);
 
+
+
     // Xử lý hiệu ứng thanh di chuyển cho tab
     useEffect(() => {
         const activeIndex = activeTab === 'published' ? 0 : 1;
-        if (tabRefs.current[activeIndex]) {
-            const { offsetLeft, offsetWidth } = tabRefs.current[activeIndex];
-            setTabIndicator({ left: offsetLeft, width: offsetWidth });
-        }
+
+        const updateTabIndicator = () => {
+            if (tabRefs.current[activeIndex]) {
+                const { offsetLeft, offsetWidth } = tabRefs.current[activeIndex];
+                setTabIndicator({ left: offsetLeft, width: offsetWidth });
+            }
+        };
+
+        requestAnimationFrame(updateTabIndicator);
     }, [activeTab]);
+
 
     const quizzes = activeTab === 'published' ? publishedQuizzes : notPublishedQuizzes;
 

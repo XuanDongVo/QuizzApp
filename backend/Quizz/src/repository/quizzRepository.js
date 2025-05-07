@@ -40,10 +40,20 @@ const updateQuizzById = async (quizzId, newQuestions) => {
     return result;
 };
 
+const updateQuizzPublishStatus = async (quizzId, publish) => {
+    const db = GET_DB();
+    const result = await db.collection("quizz").updateOne(
+        { _id: new ObjectId(quizzId) },
+        { $set: { publish: publish } }
+    );
+    return result;
+};
+
 
 module.exports = {
     createdQuizz,
     updateQuizzById,
     getQuizzById,
-    getQuizzesByPublishStatus
+    getQuizzesByPublishStatus,
+    updateQuizzPublishStatus
 };

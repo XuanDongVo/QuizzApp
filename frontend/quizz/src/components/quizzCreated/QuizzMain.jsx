@@ -9,6 +9,8 @@ import { getQuizzById } from '@/serivce/quizz';
 
 const QuizzMain = React.memo(({ quizzId }) => {
     const { quizz, deleteQuestion, setQuizz } = useCreatedQuizzContext();
+    const [loading, setLoading] = React.useState(true);
+
     const router = useRouter();
     const handleAddQuestion = () => {
         router.push(`created`);
@@ -16,22 +18,40 @@ const QuizzMain = React.memo(({ quizzId }) => {
 
 
     useEffect(() => {
-        const fetchQuizz = async () => {
-            const response = await getQuizzById(quizzId);
-            if (response.status === 200) {
-                const quizzData = response.data;
-                setQuizz(quizzData);
-            } else {
-                console.error('Failed to fetch quizz data:', response.statusText);
-            }
-        };
+        const timer = setTimeout(() => {
+            const fetchQuizz = async () => {
+                setLoading(true);
+                const response = await getQuizzById(quizzId);
+                if (response.status === 200) {
+                    const quizzData = response.data;
+                    setQuizz(quizzData);
+                } else {
+                    console.error('Failed to fetch quizz data:', response.statusText);
+                }
+                setLoading(false);
+            };
 
-        fetchQuizz();
+            fetchQuizz();
+        }, 1000);
+
+        return () => clearTimeout(timer);
     }, [quizzId]);
 
+    if (loading) {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+                <div className="relative w-16 h-16">
+                    <div className="absolute inset-0 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="absolute inset-1 bg-white rounded-full"></div>
+                </div>
+                <p className="mt-4 text-gray-600 text-lg animate-pulse">Đang tải dữ liệu câu hỏi...</p>
+            </div>
+        );
+    }
 
     return (
         <>
+
             <QuizzHeader />
             <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-6 px-4 sm:px-6 lg:px-8">
                 {/* Header */}

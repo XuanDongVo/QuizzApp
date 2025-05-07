@@ -29,3 +29,9 @@ export const getQuizzesByPublishStatus = async (publish) => {
     const response = await api.get(`/quizz/get/${publish}`);
     return response;
 };
+
+// 6. Cập nhật trạng thái publish của quiz
+export const updateQuizzPublishStatus = async (quizzId, publish) => {
+    const response = await api.put(`/quizz/${quizzId}/publish/${publish}`);
+    return response;
+};
