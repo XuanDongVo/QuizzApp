@@ -4,6 +4,7 @@ export const categories = [
         name: "Math",
         description: "Math covers topics from basic arithmetic to advanced calculus.",
         image: "/categories/image--math.svg",
+        publish: true,
         questions: [
             { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], correctAnswer: "4" },
             { question: "What is the square root of 16?", options: ["2", "4", "8", "16"], correctAnswer: "4" },
@@ -32,6 +33,7 @@ export const categories = [
         name: "Science",
         description: "Science covers topics in physics, chemistry, biology, and more.",
         image: "/categories/image--science.svg",
+        publish: true,
         questions: [
             { question: "What is the chemical symbol for water?", options: ["O2", "H2O", "CO2", "NaCl"], correctAnswer: "H2O" },
             { question: "What is the boiling point of water?", options: ["100°C", "90°C", "80°C", "110°C"], correctAnswer: "100°C" },
@@ -59,6 +61,7 @@ export const categories = [
         name: "History",
         description: "History is the study of past events, particularly in human affairs.",
         image: "/categories/image--history.svg",
+        publish: true,
         questions: [
             { question: "In which year did the French Revolution begin?", options: ["1776", "1789", "1812", "1700"], correctAnswer: "1789" },
             { question: "Which was the first country to grant women the right to vote?", options: ["USA", "UK", "New Zealand", "Sweden"], correctAnswer: "New Zealand" },
@@ -80,6 +83,7 @@ export const categories = [
         name: "Geography",
         description: "Geography studies the Earth's physical features and the distribution of life.",
         image: "/categories/image--geography.svg",
+        publish: true,
         questions: [
             { question: "What is the capital of France?", options: ["Rome", "Madrid", "Berlin", "Paris"], correctAnswer: "Paris" },
             { question: "Which is the longest river in the world?", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], correctAnswer: "Nile" },
@@ -103,6 +107,7 @@ export const categories = [
         name: "Computer Science Basics",
         description: "This category includes the fundamental concepts of computer science.",
         image: "/categories/image--computer-science-basics.svg",
+        publish: true,
         questions: [
             { question: "What does CPU stand for?", options: ["Central Processing Unit", "Central Process Unit", "Computer Personal Unit", "Central Processor Unit"], correctAnswer: "Central Processing Unit" },
             { question: "What is an algorithm?", options: ["A step-by-step procedure to solve a problem", "A type of computer hardware", "A data structure", "A programming language"], correctAnswer: "A step-by-step procedure to solve a problem" },
@@ -123,6 +128,7 @@ export const categories = [
         name: "Computer Science",
         description: "This category includes more advanced topics related to computer science.",
         image: "/categories/image--computer-science.svg",
+        publish: true,
         questions: [
             { question: "What is the time complexity of binary search?", options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"], correctAnswer: "O(log n)" },
             { question: "What is a deadlock in computing?", options: ["A situation where two processes are blocked forever", "A process that takes too long to execute", "An error in a program", "A type of memory leak"], correctAnswer: "A situation where two processes are blocked forever" },
@@ -146,6 +152,7 @@ export const categories = [
         name: "Data Structure",
         description: "This category covers different data structures used in computer science.",
         image: "/categories/image--data-structures.svg",
+        publish: true,
         questions: [
             { question: "What is the primary purpose of a stack?", options: ["To store data in a hierarchical structure", "To store data in a linear fashion", "To implement LIFO (Last In First Out) order", "To sort data"], correctAnswer: "To implement LIFO (Last In First Out) order" },
             { question: "Which data structure is used for implementing a queue?", options: ["Array", "Linked List", "Tree", "Graph"], correctAnswer: "Linked List" },
