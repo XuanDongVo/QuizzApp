@@ -1,145 +1,161 @@
-// export const categories = [
-//     { id: 1, name: "Math", description: "Mathematics is the study of numbers, quantities, and shapes.", image: "/categories/image--biology.svg" },
-//     { id: 2, name: "Science", description: "Science explores the natural world and how things work.", image: "/categories/image--biology.svg" },
-//     { id: 3, name: "History", description: "History is the study of past events and civilizations.", image: "/categories/image--biology.svg" },
-//     { id: 4, name: "Geography", description: "Geography deals with places, people, and the environment.", image: "/categories/image--biology.svg" },
-//     { id: 5, name: "History", description: "History is the study of past events and civilizations.", image: "/categories/image--biology.svg" },
-//     { id: 6, name: "Geography", description: "Geography deals with places, people, and the environment.", image: "/categories/image--biology.svg" },
-//     { id: 7, name: "History", description: "History is the study of past events and civilizations.", image: "/categories/image--biology.svg" },
-// ];
-
-
 export const categories = [
     {
         id: 1,
         name: "Math",
-        description: "Mathematics is the study of numbers, quantities, and shapes.",
-        image: "/categories/image--biology.svg",
+        description: "Math covers topics from basic arithmetic to advanced calculus.",
+        image: "/categories/image--math.svg",
         questions: [
-            {
-                question: "What is the result of 12 × 8?",
-                options: ["80", "96", "100", "92", "88"],
-                correctAnswer: "96"
-            },
-            {
-                question: "What is the square root of 144?",
-                options: ["10", "11", "12", "13", "14"],
-                correctAnswer: "12"
-            },
-            {
-                question: "If a triangle has angles 50° and 60°, what is the third angle?",
-                options: ["60°", "70°", "80°", "90°", "100°"],
-                correctAnswer: "70°"
-            },
-            {
-                question: "What is 7 cubed (7³)?",
-                options: ["49", "63", "128", "343", "512"],
-                correctAnswer: "343"
-            },
-            {
-                question: "Which of the following is a prime number?",
-                options: ["14", "21", "31", "49", "50"],
-                correctAnswer: "31"
-            }
+            { question: "What is 2 + 2?", options: ["3", "4", "5", "6"], correctAnswer: "4" },
+            { question: "What is the square root of 16?", options: ["2", "4", "8", "16"], correctAnswer: "4" },
+            { question: "What is 9 x 8?", options: ["72", "81", "64", "56"], correctAnswer: "72" },
+            { question: "What is the value of pi?", options: ["3.14", "3.41", "3.00", "2.71"], correctAnswer: "3.14" },
+            { question: "What is 100 divided by 4?", options: ["25", "30", "40", "50"], correctAnswer: "25" },
+            { question: "What is the area of a circle with radius 5?", options: ["78.5", "100", "25", "30"], correctAnswer: "78.5" },
+            { question: "What is the derivative of x^2?", options: ["2x", "x", "x^2", "1"], correctAnswer: "2x" },
+            { question: "What is 5! (5 factorial)?", options: ["120", "100", "25", "60"], correctAnswer: "120" },
+            { question: "What is the integral of 1/x?", options: ["ln(x)", "x^2", "x", "1"], correctAnswer: "ln(x)" },
+            { question: "What is the sum of the angles in a triangle?", options: ["180 degrees", "360 degrees", "90 degrees", "120 degrees"], correctAnswer: "180 degrees" },
+            { question: "What is the result of 3^3?", options: ["27", "9", "81", "18"], correctAnswer: "27" },
+            { question: "What is the value of e?", options: ["2.718", "3.141", "1.618", "1.234"], correctAnswer: "2.718" },
+            { question: "What is the perimeter of a rectangle with length 6 and width 4?", options: ["20", "24", "18", "22"], correctAnswer: "20" },
+            { question: "What is the derivative of sin(x)?", options: ["cos(x)", "sin(x)", "tan(x)", "-cos(x)"], correctAnswer: "cos(x)" },
+            { question: "What is the value of the sine of 90 degrees?", options: ["1", "0", "-1", "0.5"], correctAnswer: "1" },
+            { question: "What is the volume of a cube with side length 3?", options: ["27", "9", "6", "12"], correctAnswer: "27" },
+            { question: "What is the greatest common divisor of 12 and 18?", options: ["6", "9", "3", "12"], correctAnswer: "6" },
+            { question: "What is the lowest common multiple of 3 and 5?", options: ["15", "10", "12", "30"], correctAnswer: "15" },
+            { question: "What is the sum of the first 10 prime numbers?", options: ["129", "100", "150", "115"], correctAnswer: "129" },
+            { question: "What is the formula for the area of a triangle?", options: ["(base x height) / 2", "(length x width)", "πr^2", "side^2"], correctAnswer: "(base x height) / 2" }
         ]
     },
     {
         id: 2,
         name: "Science",
-        description: "Science explores the natural world and how things work.",
-        image: "/categories/image--biology.svg",
+        description: "Science covers topics in physics, chemistry, biology, and more.",
+        image: "/categories/image--science.svg",
         questions: [
-            {
-                question: "What gas do plants absorb from the atmosphere?",
-                options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen", "Helium"],
-                correctAnswer: "Carbon Dioxide"
-            },
-            {
-                question: "What is the chemical symbol for water?",
-                options: ["O2", "CO2", "H2O", "NaCl", "CH4"],
-                correctAnswer: "H2O"
-            },
-            {
-                question: "What planet is known as the Red Planet?",
-                options: ["Earth", "Venus", "Mars", "Jupiter", "Saturn"],
-                correctAnswer: "Mars"
-            },
-            {
-                question: "Which part of the human body contains the most bones?",
-                options: ["Skull", "Spine", "Hand", "Foot", "Rib cage"],
-                correctAnswer: "Hand"
-            },
-            {
-                question: "Which scientist developed the theory of relativity?",
-                options: ["Isaac Newton", "Albert Einstein", "Nikola Tesla", "Galileo Galilei", "Marie Curie"],
-                correctAnswer: "Albert Einstein"
-            }
+            { question: "What is the chemical symbol for water?", options: ["O2", "H2O", "CO2", "NaCl"], correctAnswer: "H2O" },
+            { question: "What is the boiling point of water?", options: ["100°C", "90°C", "80°C", "110°C"], correctAnswer: "100°C" },
+            { question: "What is the most abundant gas in Earth's atmosphere?", options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"], correctAnswer: "Nitrogen" },
+            { question: "Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Venus", "Jupiter"], correctAnswer: "Mars" },
+            { question: "What is the process by which plants make food?", options: ["Photosynthesis", "Respiration", "Digestion", "Fermentation"], correctAnswer: "Photosynthesis" },
+            { question: "What is the force that pulls objects toward Earth?", options: ["Friction", "Magnetism", "Gravity", "Tension"], correctAnswer: "Gravity" },
+            { question: "What is the primary function of red blood cells?", options: ["Transport oxygen", "Fight infections", "Clot blood", "Digest food"], correctAnswer: "Transport oxygen" },
+            { question: "What is the atomic number of hydrogen?", options: ["1", "2", "3", "4"], correctAnswer: "1" },
+            { question: "Who developed the theory of relativity?", options: ["Isaac Newton", "Galileo Galilei", "Albert Einstein", "Nikola Tesla"], correctAnswer: "Albert Einstein" },
+            { question: "What is the chemical formula for methane?", options: ["CH4", "C2H6", "CO2", "H2O"], correctAnswer: "CH4" },
+            { question: "Which organ in the human body filters blood?", options: ["Liver", "Heart", "Kidney", "Lung"], correctAnswer: "Kidney" },
+            { question: "What is the largest organ in the human body?", options: ["Skin", "Liver", "Brain", "Heart"], correctAnswer: "Skin" },
+            { question: "What is the main source of energy for the Earth?", options: ["The Sun", "The Moon", "Volcanoes", "The Wind"], correctAnswer: "The Sun" },
+            { question: "What is the most common type of rock on Earth's crust?", options: ["Granite", "Limestone", "Basalt", "Marble"], correctAnswer: "Basalt" },
+            { question: "Which element is most abundant in the Earth's crust?", options: ["Oxygen", "Silicon", "Iron", "Aluminum"], correctAnswer: "Oxygen" },
+            { question: "What is the name of the galaxy we live in?", options: ["Andromeda", "Milky Way", "Solar System", "Whirlpool"], correctAnswer: "Milky Way" },
+            { question: "Which of these is a mammal?", options: ["Shark", "Eagle", "Lion", "Penguin"], correctAnswer: "Lion" },
+            { question: "Which of these is a renewable energy source?", options: ["Coal", "Natural Gas", "Wind", "Nuclear"], correctAnswer: "Wind" },
+            { question: "What is the smallest unit of matter?", options: ["Atom", "Molecule", "Electron", "Proton"], correctAnswer: "Atom" }
         ]
     },
     {
         id: 3,
         name: "History",
-        description: "History is the study of past events and civilizations.",
+        description: "History is the study of past events, particularly in human affairs.",
         image: "/categories/image--history.svg",
         questions: [
-            {
-                question: "Who was the first president of the United States?",
-                options: ["Thomas Jefferson", "Abraham Lincoln", "George Washington", "John Adams", "Theodore Roosevelt"],
-                correctAnswer: "George Washington"
-            },
-            {
-                question: "In what year did World War II end?",
-                options: ["1945", "1939", "1918", "1950", "1960"],
-                correctAnswer: "1945"
-            },
-            {
-                question: "Which ancient civilization built the pyramids?",
-                options: ["Romans", "Greeks", "Mayans", "Egyptians", "Chinese"],
-                correctAnswer: "Egyptians"
-            },
-            {
-                question: "Who discovered America in 1492?",
-                options: ["Marco Polo", "Christopher Columbus", "Vasco da Gama", "Ferdinand Magellan", "James Cook"],
-                correctAnswer: "Christopher Columbus"
-            },
-            {
-                question: "Which country was the main opponent of the USA in the Cold War?",
-                options: ["China", "Germany", "USSR", "Japan", "France"],
-                correctAnswer: "USSR"
-            }
+            { question: "In which year did the French Revolution begin?", options: ["1776", "1789", "1812", "1700"], correctAnswer: "1789" },
+            { question: "Which was the first country to grant women the right to vote?", options: ["USA", "UK", "New Zealand", "Sweden"], correctAnswer: "New Zealand" },
+            { question: "Who was the famous nurse during the Crimean War?", options: ["Florence Nightingale", "Clara Barton", "Mary Seacole", "Edith Cavell"], correctAnswer: "Florence Nightingale" },
+            { question: "Which event marked the beginning of the Great Depression?", options: ["Stock Market Crash of 1929", "World War I", "Industrial Revolution", "Dust Bowl"], correctAnswer: "Stock Market Crash of 1929" },
+            { question: "Who was the leader of the Nazi Party during World War II?", options: ["Joseph Stalin", "Adolf Hitler", "Benito Mussolini", "Franklin Roosevelt"], correctAnswer: "Adolf Hitler" },
+            { question: "In which year did the Titanic sink?", options: ["1912", "1905", "1890", "1920"], correctAnswer: "1912" },
+            { question: "Which city was divided into East and West during the Cold War?", options: ["Paris", "Berlin", "London", "Moscow"], correctAnswer: "Berlin" },
+            { question: "What was the name of the ship that brought the Pilgrims to America?", options: ["Mayflower", "Santa Maria", "Beagle", "Endeavour"], correctAnswer: "Mayflower" },
+            { question: "Who was the last queen of France before the French Revolution?", options: ["Marie Antoinette", "Catherine de Medici", "Elizabeth I", "Victoria"], correctAnswer: "Marie Antoinette" },
+            { question: "What year did the Berlin Wall fall?", options: ["1989", "1991", "1979", "1961"], correctAnswer: "1989" },
+            { question: "Which battle is considered the turning point of the American Civil War?", options: ["Battle of Gettysburg", "Battle of Antietam", "Battle of Fort Sumter", "Battle of Bull Run"], correctAnswer: "Battle of Gettysburg" },
+            { question: "Who was the famous leader of the Indian independence movement?", options: ["Jawaharlal Nehru", "Mahatma Gandhi", "Subhas Chandra Bose", "Indira Gandhi"], correctAnswer: "Mahatma Gandhi" },
+            { question: "Who was the first emperor of Rome?", options: ["Augustus", "Julius Caesar", "Nero", "Caligula"], correctAnswer: "Augustus" }
         ]
     },
     {
         id: 4,
         name: "Geography",
-        description: "Geography deals with places, people, and the environment.",
+        description: "Geography studies the Earth's physical features and the distribution of life.",
         image: "/categories/image--geography.svg",
         questions: [
-            {
-                question: "Which is the largest continent on Earth?",
-                options: ["Africa", "Asia", "Europe", "North America", "South America"],
-                correctAnswer: "Asia"
-            },
-            {
-                question: "What is the capital of France?",
-                options: ["London", "Berlin", "Paris", "Madrid", "Rome"],
-                correctAnswer: "Paris"
-            },
-            {
-                question: "Which country has the largest population?",
-                options: ["USA", "India", "China", "Brazil", "Russia"],
-                correctAnswer: "China"
-            },
-            {
-                question: "What is the longest river in the world?",
-                options: ["Amazon River", "Mississippi River", "Nile River", "Yangtze River", "Danube River"],
-                correctAnswer: "Nile River"
-            },
-            {
-                question: "Which desert is the largest in the world?",
-                options: ["Gobi", "Sahara", "Kalahari", "Arabian", "Antarctic"],
-                correctAnswer: "Antarctic"
-            }
+            { question: "What is the capital of France?", options: ["Rome", "Madrid", "Berlin", "Paris"], correctAnswer: "Paris" },
+            { question: "Which is the longest river in the world?", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], correctAnswer: "Nile" },
+            { question: "Which country has the most islands in the world?", options: ["Sweden", "Canada", "Norway", "Finland"], correctAnswer: "Sweden" },
+            { question: "What is the smallest country in the world?", options: ["Monaco", "San Marino", "Vatican City", "Liechtenstein"], correctAnswer: "Vatican City" },
+            { question: "Which desert is the largest in the world?", options: ["Sahara", "Kalahari", "Gobi", "Atacama"], correctAnswer: "Sahara" },
+            { question: "Which continent is the largest by land area?", options: ["Africa", "Asia", "Europe", "Australia"], correctAnswer: "Asia" },
+            { question: "What is the largest ocean on Earth?", options: ["Atlantic", "Indian", "Southern", "Pacific"], correctAnswer: "Pacific" },
+            { question: "Which country has the highest population in the world?", options: ["India", "USA", "Russia", "China"], correctAnswer: "China" },
+            { question: "What is the largest country by land area?", options: ["Canada", "United States", "China", "Russia"], correctAnswer: "Russia" },
+            { question: "Which mountain is the highest in the world?", options: ["Mount Kilimanjaro", "Mount Everest", "Mount Fuji", "K2"], correctAnswer: "Mount Everest" },
+            { question: "Which ocean is the deepest?", options: ["Atlantic", "Pacific", "Indian", "Arctic"], correctAnswer: "Pacific" },
+            { question: "Which city is known as the Big Apple?", options: ["Los Angeles", "New York", "Chicago", "San Francisco"], correctAnswer: "New York" },
+            { question: "What is the longest mountain range in the world?", options: ["Andes", "Himalayas", "Rockies", "Alps"], correctAnswer: "Andes" },
+            { question: "Which country has the largest economy in the world?", options: ["China", "USA", "India", "Japan"], correctAnswer: "USA" },
+            { question: "Which river flows through Egypt?", options: ["Amazon", "Nile", "Mississippi", "Yangtze"], correctAnswer: "Nile" }
+        ]
+    },
+    {
+        id: 5,
+        name: "Computer Science Basics",
+        description: "This category includes the fundamental concepts of computer science.",
+        image: "/categories/image--computer-science-basics.svg",
+        questions: [
+            { question: "What does CPU stand for?", options: ["Central Processing Unit", "Central Process Unit", "Computer Personal Unit", "Central Processor Unit"], correctAnswer: "Central Processing Unit" },
+            { question: "What is an algorithm?", options: ["A step-by-step procedure to solve a problem", "A type of computer hardware", "A data structure", "A programming language"], correctAnswer: "A step-by-step procedure to solve a problem" },
+            { question: "Which programming language is known as the mother of all languages?", options: ["C", "Java", "Python", "Assembly"], correctAnswer: "C" },
+            { question: "What is the primary function of an operating system?", options: ["Manage computer resources", "Write programs", "Display graphics", "Access the internet"], correctAnswer: "Manage computer resources" },
+            { question: "What is the main function of RAM in a computer?", options: ["Store data", "Process instructions", "Display output", "Provide power"], correctAnswer: "Store data" },
+            { question: "Which of the following is an example of an object-oriented programming language?", options: ["C", "Java", "Assembly", "Fortran"], correctAnswer: "Java" },
+            { question: "What is the main purpose of a database?", options: ["Store and retrieve data", "Display graphics", "Write programs", "Process data"], correctAnswer: "Store and retrieve data" },
+            { question: "What does HTML stand for?", options: ["HyperText Markup Language", "HyperText Machine Language", "Hyper Transfer Markup Language", "None of the above"], correctAnswer: "HyperText Markup Language" },
+            { question: "Which of these is a version control system?", options: ["Git", "Windows", "MacOS", "Java"], correctAnswer: "Git" },
+            { question: "What is an IP address?", options: ["A unique identifier for a computer on a network", "A type of virus", "A programming language", "A computer hardware"], correctAnswer: "A unique identifier for a computer on a network" },
+            { question: "What is an example of a high-level programming language?", options: ["C", "Assembly", "Python", "Machine Language"], correctAnswer: "Python" },
+            { question: "Which of the following is an open-source operating system?", options: ["Windows", "MacOS", "Linux", "iOS"], correctAnswer: "Linux" }
+        ]
+    },
+    {
+        id: 6,
+        name: "Computer Science",
+        description: "This category includes more advanced topics related to computer science.",
+        image: "/categories/image--computer-science.svg",
+        questions: [
+            { question: "What is the time complexity of binary search?", options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"], correctAnswer: "O(log n)" },
+            { question: "What is a deadlock in computing?", options: ["A situation where two processes are blocked forever", "A process that takes too long to execute", "An error in a program", "A type of memory leak"], correctAnswer: "A situation where two processes are blocked forever" },
+            { question: "What does a hash table do?", options: ["Stores data using a key-value pair", "Sorts data", "Calculates the value of a function", "Filters data"], correctAnswer: "Stores data using a key-value pair" },
+            { question: "Which of the following is a characteristic of a queue data structure?", options: ["Last In, First Out", "First In, First Out", "Random Access", "Indexed"], correctAnswer: "First In, First Out" },
+            { question: "What is a linked list?", options: ["A collection of nodes", "An array of data", "A stack of data", "A queue of data"], correctAnswer: "A collection of nodes" },
+            { question: "Which algorithm is commonly used for sorting?", options: ["Bubble Sort", "Merge Sort", "Quick Sort", "All of the above"], correctAnswer: "All of the above" },
+            { question: "What does the term 'big O notation' refer to?", options: ["The memory usage of an algorithm", "The efficiency of an algorithm in terms of time complexity", "The speed of the processor", "The operating system performance"], correctAnswer: "The efficiency of an algorithm in terms of time complexity" },
+            { question: "What is a binary tree?", options: ["A tree structure with two child nodes for each parent", "A data structure that holds key-value pairs", "A method of sorting data", "A type of graph"], correctAnswer: "A tree structure with two child nodes for each parent" },
+            { question: "Which of the following is a widely used graph traversal algorithm?", options: ["Depth-First Search (DFS)", "Breadth-First Search (BFS)", "Both DFS and BFS", "Dijkstra's Algorithm"], correctAnswer: "Both DFS and BFS" },
+            { question: "Which of the following is a non-relational database?", options: ["MySQL", "PostgreSQL", "MongoDB", "Oracle"], correctAnswer: "MongoDB" },
+            { question: "What is recursion in programming?", options: ["A function that calls itself", "A function that returns a value", "A type of loop", "A type of variable"], correctAnswer: "A function that calls itself" },
+            { question: "What is the function of a CPU cache?", options: ["To store frequently accessed data", "To execute programs", "To store large files", "To manage input/output devices"], correctAnswer: "To store frequently accessed data" },
+            { question: "What is the principle of object-oriented programming?", options: ["Encapsulation, Inheritance, Polymorphism, and Abstraction", "Sorting, Searching, and Iteration", "Input, Output, and Storage", "None of the above"], correctAnswer: "Encapsulation, Inheritance, Polymorphism, and Abstraction" },
+            { question: "Which of the following is not an example of a programming paradigm?", options: ["Imperative", "Functional", "Object-Oriented", "Hardware"], correctAnswer: "Hardware" },
+            { question: "What is the purpose of an API?", options: ["To manage memory", "To allow communication between different software components", "To optimize the speed of an application", "To compile code"], correctAnswer: "To allow communication between different software components" },
+            { question: "What is the difference between a class and an object?", options: ["A class is a template; an object is an instance of a class", "A class is a function; an object is a variable", "A class is a type of loop; an object is a function", "A class is a type of algorithm; an object is a program"], correctAnswer: "A class is a template; an object is an instance of a class" }
+        ]
+    }, {
+        id: 7,
+        name: "Data Structure",
+        description: "This category covers different data structures used in computer science.",
+        image: "/categories/image--data-structures.svg",
+        questions: [
+            { question: "What is the primary purpose of a stack?", options: ["To store data in a hierarchical structure", "To store data in a linear fashion", "To implement LIFO (Last In First Out) order", "To sort data"], correctAnswer: "To implement LIFO (Last In First Out) order" },
+            { question: "Which data structure is used for implementing a queue?", options: ["Array", "Linked List", "Tree", "Graph"], correctAnswer: "Linked List" },
+            { question: "What is a binary search tree?", options: ["A tree where nodes are ordered by value", "A tree where nodes are unordered", "A tree used for storing strings", "A type of graph"], correctAnswer: "A tree where nodes are ordered by value" },
+            { question: "Which of the following is an example of a non-linear data structure?", options: ["Array", "Linked List", "Tree", "Stack"], correctAnswer: "Tree" },
+            { question: "What is the time complexity of accessing an element in an array by index?", options: ["O(n)", "O(log n)", "O(1)", "O(n^2)"], correctAnswer: "O(1)" },
+            { question: "Which of these data structures is best for searching an element?", options: ["Linked List", "Hash Table", "Array", "Stack"], correctAnswer: "Hash Table" },
+            { question: "What is the space complexity of a singly linked list?", options: ["O(1)", "O(n)", "O(n log n)", "O(log n)"], correctAnswer: "O(n)" },
+            { question: "What is the main advantage of a doubly linked list over a singly linked list?", options: ["Faster insertions", "Easier access to previous elements", "Lower memory usage", "No need to manage pointers"], correctAnswer: "Easier access to previous elements" },
+            { question: "Which data structure is used to represent a graph?", options: ["Stack", "Queue", "Linked List", "Adjacency Matrix"], correctAnswer: "Adjacency Matrix" }
         ]
     }
-];
+]

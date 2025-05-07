@@ -32,7 +32,7 @@ const QuizzMain = React.memo(({ quizzId }) => {
             };
 
             fetchQuizz();
-        }, 1000);
+        }, 500);
 
         return () => clearTimeout(timer);
     }, [quizzId]);
@@ -41,10 +41,10 @@ const QuizzMain = React.memo(({ quizzId }) => {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
                 <div className="relative w-16 h-16">
-                    <div className="absolute inset-0 border-4 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="absolute inset-0 border-4 border-[var(--background-primary)] border-t-transparent rounded-full animate-spin"></div>
                     <div className="absolute inset-1 bg-white rounded-full"></div>
                 </div>
-                <p className="mt-4 text-gray-600 text-lg animate-pulse">Đang tải dữ liệu câu hỏi...</p>
+                {/* <p className="mt-4 text-gray-600 text-lg animate-pulse">Đang tải dữ liệu câu hỏi...</p> */}
             </div>
         );
     }
