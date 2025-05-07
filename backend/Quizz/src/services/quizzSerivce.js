@@ -24,6 +24,14 @@ const addQuestionToQuizz = async (quizzId, question) => {
     return updatedQuizz;
 };
 
+const getQuizzesByPublishStatus = async (publish) => {
+    if (publish === undefined) {
+        throw new Error("Publish status is required");
+    }
+    const quizzes = await quizzRepository.getQuizzesByPublishStatus(publish);
+    return quizzes;
+};
+
 
 const getQuizzById = async (quizzId) => {
     if (!quizzId) {
@@ -36,5 +44,6 @@ const getQuizzById = async (quizzId) => {
 module.exports = {
     createdQuizz,
     addQuestionToQuizz,
-    getQuizzById
+    getQuizzById,
+    getQuizzesByPublishStatus
 };

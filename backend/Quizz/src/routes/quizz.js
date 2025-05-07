@@ -23,6 +23,26 @@ route.get("/:id", async (req, res) => {
     }
 });
 
+route.get("/get/:publish", async (req, res) => {
+    try {
+        const { publish } = req.params;
+        let publishStatus;
+
+        if (publish.toLowerCase() === 'true') {
+            publishStatus = true;
+        } else if (publish.toLowerCase() === 'false') {
+            publishStatus = false;
+        } else {
+            return res.status(400).json({ error: 'Invalid publish status. Use "true" or "false".' });
+        }
+
+        const quizzes = await quizzService.getQuizzesByPublishStatus(publishStatus);
+        res.status(200).json(quizzes);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 route.post("/:id/questions", async (req, res) => {
     try {
         const { id } = req.params;

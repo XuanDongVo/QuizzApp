@@ -23,3 +23,9 @@ export const updateAllQuestions = async (quizzId, questions) => {
     const response = await api.post(`/quizz/${quizzId}/questions`, questions);
     return response;
 };
+
+// 5. Lấy danh sách quiz theo trạng thái publish
+export const getQuizzesByPublishStatus = async (publish) => {
+    const response = await api.get(`/quizz/get/${publish}`);
+    return response;
+};
