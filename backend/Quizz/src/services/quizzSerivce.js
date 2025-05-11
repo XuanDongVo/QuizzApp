@@ -15,13 +15,17 @@ const addQuestionToQuizz = async (quizzId, question) => {
     const quizz = await quizzRepository.getQuizzById(quizzId);
     if (!quizz) throw new Error("Quizz not found");
 
-
-    console.log("currentQuestions", typeof (question));
-    console.log("currentQuestions", question);
-
     const updatedQuizz = await quizzRepository.updateQuizzById(quizzId, question);
 
     return updatedQuizz;
+};
+
+const getQuizzesByPublishStatus = async (publish) => {
+    if (publish === undefined) {
+        throw new Error("Publish status is required");
+    }
+    const quizzes = await quizzRepository.getQuizzesByPublishStatus(publish);
+    return quizzes;
 };
 
 
@@ -33,8 +37,18 @@ const getQuizzById = async (quizzId) => {
     return quizz;
 }
 
+const updateQuizzPublishStatus = async (quizzId, publish) => {
+    if (!quizzId) throw new Error("Invalid quizz ID");
+    if (publish === undefined) throw new Error("Publish status is required");
+
+    return await quizzRepository.updateQuizzPublishStatus(quizzId, publish);
+
+}
+
 module.exports = {
     createdQuizz,
     addQuestionToQuizz,
-    getQuizzById
+    getQuizzById,
+    getQuizzesByPublishStatus,
+    updateQuizzPublishStatus
 };

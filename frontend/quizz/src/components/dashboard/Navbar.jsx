@@ -6,7 +6,7 @@ import {
     DialogPanel,
     DialogTitle,
 } from '@headlessui/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { createdQuizz } from '@/serivce/quizz';
 
@@ -17,6 +17,21 @@ const NavBar = () => {
     const [hasError, setHasError] = useState(false);
     const inputRef = useRef(null);
     const router = useRouter();
+    const pathname = usePathname();
+
+    const navItems = ['Dashboard', 'Activity', 'Classes', 'Flashcards', 'Library'];
+    const navRefs = useRef([]);
+    const [activeTab, setActiveTab] = useState({ left: 0, width: 0 });
+
+    useEffect(() => {
+        const activeIndex = navItems.findIndex(item =>
+            pathname === (item === 'Dashboard' ? '/admin/dashboard' : `/admin/dashboard/${item.toLowerCase()}`)
+        );
+        if (activeIndex !== -1 && navRefs.current[activeIndex]) {
+            const { offsetLeft, offsetWidth } = navRefs.current[activeIndex];
+            setActiveTab({ left: offsetLeft, width: offsetWidth });
+        }
+    }, [pathname]);
 
     const handleCreateManual = async () => {
         if (quizTitle.trim() === '') {
@@ -35,11 +50,12 @@ const NavBar = () => {
             console.error('Error creating quiz:', error);
         }
     };
+
     useEffect(() => {
         if (isOpenManual) {
             setTimeout(() => {
                 inputRef.current?.focus();
-            }, 100); // Slight delay to ensure the modal is mounted
+            }, 100);
         }
     }, [isOpenManual]);
 
@@ -51,12 +67,24 @@ const NavBar = () => {
                         <div className="text-2xl font-bold text-[var(--background-primary)]">Quizizz</div>
                     </Link>
 
-                    <div className="hidden md:flex space-x-6">
-                        {['Activity', 'Classes', 'Flashcards', 'Library'].map(item => (
-                            <a key={item} href="#" className="text-gray-600 font-bold hover:text-[var(--background-primary)] transition-colors duration-200">
+                    <div className="relative hidden md:flex space-x-6">
+                        {navItems.map((item, index) => (
+                            <Link
+                                key={item}
+                                href={item === 'Dashboard' ? '/admin/dashboard' : `/admin/dashboard/${item.toLowerCase()}`}
+                                className={`text-gray-600 font-bold transition-colors duration-200 ${pathname === (item === 'Dashboard' ? '/admin/dashboard' : `/admin/dashboard/${item.toLowerCase()}`)
+                                    ? 'text-[var(--background-primary)]'
+                                    : 'hover:text-[var(--background-primary)]'
+                                    }`}
+                                ref={el => (navRefs.current[index] = el)}
+                            >
                                 {item}
-                            </a>
+                            </Link>
                         ))}
+                        <div
+                            className="absolute bottom-0 h-0.5 bg-[var(--background-primary)] transition-all duration-300"
+                            style={{ left: activeTab.left, width: activeTab.width }}
+                        />
                     </div>
 
                     <div className="md:hidden">
@@ -87,10 +115,17 @@ const NavBar = () => {
 
                 {isMenuOpen && (
                     <div className="md:hidden mt-4 flex flex-col space-y-4 px-4">
-                        {['Activity', 'Classes', 'Flashcards', 'Library'].map(item => (
-                            <a key={item} href="#" className="text-gray-600 font-bold hover:text-[var(--background-primary)]">
+                        {navItems.map(item => (
+                            <Link
+                                key={item}
+                                href={item === 'Dashboard' ? '/admin/dashboard' : `/admin/dashboard/${item.toLowerCase()}`}
+                                className={`text-gray-600 font-bold hover:text-[var(--background-primary)] ${pathname === (item === 'Dashboard' ? '/admin/dashboard' : `/admin/dashboard/${item.toLowerCase()}`)
+                                    ? 'text-[var(--background-primary)] border-b-2 border-[var(--background-primary)]'
+                                    : ''
+                                    }`}
+                            >
                                 {item}
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 )}
