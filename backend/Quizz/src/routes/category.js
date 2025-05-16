@@ -13,18 +13,6 @@ route.get("/", async (req, res) => {
     }
 });
 
-// Tạo nhiều topic mới từ dữ liệu mẫu
-route.post("/new", async (req, res) => {
-    try {
-        const createdTopics = [];
-        for (const subject of subjectDocuments) {
-            const createdTopic = await topicService.createTopic(subject);
-            createdTopics.push(createdTopic);
-        }
-        res.status(201).json(createdTopics);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
+
 
 module.exports = route;

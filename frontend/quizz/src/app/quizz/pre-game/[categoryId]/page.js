@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 import { categories } from "@/dataFake";
 import Link from "next/link";
-import { use, useEffect } from 'react'
+import Image from "next/image";
+import { useEffect, use } from 'react'
 import { useQuizContext } from "@/context/quizzContext";
 
-export default function page({ params }) {
+export default function Page({ params }) {
     const { quizData, setQuizData, resetQuiz } = useQuizContext();
     const { categoryId } = use(params);
 
@@ -15,9 +16,8 @@ export default function page({ params }) {
         if (category) {
             resetQuiz();
             setQuizData(category);
-
         }
-    }, [categoryId]);
+    }, [categoryId, resetQuiz, setQuizData]);
 
     if (!quizData) {
         return <div className="text-white text-center pt-10">Đang tải dữ liệu...</div>;
@@ -28,22 +28,28 @@ export default function page({ params }) {
             <div className="bg-cover bg-center h-full" style={{ backgroundImage: 'url(https://cf.quizizz.com/themes/v2/classic/bg_image.jpg)' }}>
                 <div className="container mx-auto h-full flex items-center justify-center flex-direction-col">
                     <div className="flex gap-5 flex-col w-3/12">
-                        {/* Ten tro choi */}
-                        <div className=" bg-gradient-to-t from-[#ffffff14] to-[#ffffff0a] rounded-lg p-5">
-                            <div className="flex gap-7 ">
-                                <img src={quizData.image} className="w-20 h-20" />
+                        {/* Tên trò chơi */}
+                        <div className="bg-gradient-to-t from-[#ffffff14] to-[#ffffff0a] rounded-lg p-5">
+                            <div className="flex gap-7">
+                                <Image
+                                    src={quizData.image}
+                                    alt={quizData.name} // Thêm alt mô tả
+                                    width={80}
+                                    height={80}
+                                    className="w-20 h-20"
+                                />
                                 <div className="flex flex-col justify-center">
-                                    <h1 className="text-2xl text-white ">{quizData.name}</h1>
+                                    <h1 className="text-2xl text-white">{quizData.name}</h1>
                                     <p className="text-white font-light opacity-75">{quizData.questions.length} câu hỏi</p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Nut choi */}
-                        <div className="bg-[var(--background-color)] rounded-lg p-5 ">
-                            <div className="flex flex-col gap-5 alight-center justify-center">
-                                {/* tien trinh game */}
-                                <div >
+                        {/* Nút chơi */}
+                        <div className="bg-[var(--background-color)] rounded-lg p-5">
+                            <div className="flex flex-col gap-5 align-center justify-center">
+                                {/* Tiến trình game */}
+                                <div>
                                     <Progress value={10} colorProcess="bg-white" />
                                     <div className="flex justify-between">
                                         <p className="text-white text-[10px] font-medium">Start</p>
@@ -59,7 +65,6 @@ export default function page({ params }) {
                                         </div>
                                     </Link>
                                 </Button>
-
                             </div>
                         </div>
                     </div>
@@ -76,6 +81,5 @@ export default function page({ params }) {
                 </div>
             </Link>
         </div>
-
-    )
+    );
 }

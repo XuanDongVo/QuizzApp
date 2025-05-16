@@ -1,48 +1,84 @@
-// context/createdQuizzContext.js
 'use client';
 import React, { createContext, useContext, useState } from 'react';
+import { updateAllQuestions } from '@/serivce/quizz';
 
 const CreatedQuizzContext = createContext();
 
 export const CreatedQuizzProvider = ({ children }) => {
-    const [questions, setQuestions] = useState([
-        {
-            id: 1,
-            question: 'Question 1',
-            answers: ['a', 'b', 'c', 'd'],
-            correctAnswer: ['b'],
-        },
-    ]);
+    const [quizz, setQuizz] = useState({
+        id: null,
+        name: '',
+        image: 'https://www.ksb-fluidexperts.fr/wp-content/uploads/2020/12/QUIZZ-scaled.jpg',
+        questions: []
+    });
 
-    const addQuestion = ({ answers, correctAnswer }) => {
+    // Thêm câu hỏi mới
+    const addQuestion = ({ currentQuestion, answers, correctAnswer, quizzId }) => {
         const newQuestion = {
-            id: questions.length + 1,
-            question: `Question ${questions.length + 1}`,
-            answers: answers,
-            correctAnswer: correctAnswer,
+            id: Date.now(),
+            question: currentQuestion,
+            options: answers,
+            correctAnswer: correctAnswer[0]
         };
-        setQuestions([...questions, newQuestion]);
+
+        const updatedQuestions = Array.isArray(quizz?.questions)
+            ? [...quizz.questions, newQuestion]
+            : [newQuestion];
+
+        setQuizz(prev => ({
+            ...prev,
+            questions: updatedQuestions
+        }));
+
+        // Gửi câu hỏi mới lên server
+        updateAllQuestions(quizzId, updatedQuestions)
+
     };
 
-    // Hàm chỉnh sửa câu hỏi
-    const updateQuestion = (id, updatedQuestion) => {
-        setQuestions(
-            questions.map((q) => (q.id === id ? { ...q, ...updatedQuestion } : q))
-        );
+
+    // Cập nhật câu hỏi
+    const updateQuestion = (questionId, updatedQuestion, quizzId) => {
+        const updatedQuestions = quizz.questions.map((question) => {
+            if (question.id === questionId) {
+                return { ...question, ...updatedQuestion };
+            }
+            return question;
+        });
+
+        setQuizz((prevQuizz) => {
+            return {
+                ...prevQuizz,
+                questions: updatedQuestions
+            };
+        });
+
+        updateAllQuestions(quizzId, updatedQuestions);
     };
 
-    // Hàm xóa câu hỏi
-    const deleteQuestion = (id) => {
-        setQuestions(questions.filter((q) => q.id !== id));
+
+    // Xoá câu hỏi
+    const deleteQuestion = (quizzId, index) => {
+        const updatedQuestions = quizz.questions.filter((item) => item.id !== index);
+        setQuizz((prevQuizz) => {
+            return {
+                ...prevQuizz,
+                questions: updatedQuestions
+            };
+        });
+
+        updateAllQuestions(quizzId, updatedQuestions);
     };
+
+
 
     return (
         <CreatedQuizzContext.Provider
             value={{
-                questions,
+                quizz,
+                setQuizz,
                 addQuestion,
                 updateQuestion,
-                deleteQuestion,
+                deleteQuestion
             }}
         >
             {children}
@@ -50,4 +86,4 @@ export const CreatedQuizzProvider = ({ children }) => {
     );
 };
 
-export const useQuizContext = () => useContext(CreatedQuizzContext);
+export const useCreatedQuizzContext = () => useContext(CreatedQuizzContext);

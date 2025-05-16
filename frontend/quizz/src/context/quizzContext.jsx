@@ -26,14 +26,19 @@ export const QuizProvider = ({ children }) => {
 
     }
 
-    const nextQuestion = (totalQuestions, categoryId) => {
+    const nextQuestion = (totalQuestions, categoryId, isPreview, quizzId) => {
         if (currentQuestionIndex < totalQuestions - 1) {
             setCurrentQuestionIndex((prev) => prev + 1);
             setShowAnswer(false);
         } else {
             setCurrentQuestionIndex(0);
             setShowAnswer(false);
-            router.push(`/quizz/game-finnish`);
+            if (isPreview) {
+                router.push(`/admin/quizz/${quizzId}/main`);
+            } else {
+                router.push(`/quizz/game-finnish`);
+            }
+
         }
     };
 
@@ -61,7 +66,8 @@ export const QuizProvider = ({ children }) => {
                 answerIncorrect,
                 quizData,
                 setQuizData,
-                resetQuiz
+                resetQuiz,
+                setCurrentQuestionIndex
 
             }}
         >

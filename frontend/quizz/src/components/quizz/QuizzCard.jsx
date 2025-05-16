@@ -12,7 +12,7 @@ const QuizzCard = ({ category }) => {
             {/* Hình ảnh */}
             <div className="rounded-xl h-[10rem] overflow-hidden">
                 <Image
-                    src={category?.image}
+                    src={category?.image || "/categories/image--quizz.png"}
                     width={300}
                     height={200}
                     alt={category.name}

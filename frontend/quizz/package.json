@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "cross-env BUILD_MODE=dev && next dev --turbopack",
+    "build": "cross-env BUILD_MODE=production && next build",
+    "start": "cross-env BUILD_MODE=dev && next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -16,6 +16,8 @@
     "axios": "^1.8.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.5.0",
     "lucide-react": "^0.479.0",
     "next": "^15.2.1",
     "react": "^19.1.0",

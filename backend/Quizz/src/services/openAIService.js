@@ -10,9 +10,8 @@ async function getChatGPTResponse(topic, questionCount) {
             Mỗi câu hỏi phải có 5 đáp án (options), trong đó chỉ có 1 đáp án đúng. 
             Trả về kết quả dưới dạng JSON với cấu trúc sau:
             {
-                "name": "${topic}",
                 "questions": [
-                    {
+                    {   "id": 1,
                         "question": "Nội dung câu hỏi",
                         "options": ["đáp án 1", "đáp án 2", "đáp án 3", "đáp án 4", "đáp án 5"],
                         "correctAnswer": "đáp án đúng"

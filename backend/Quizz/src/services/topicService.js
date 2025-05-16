@@ -1,4 +1,4 @@
-const topicRepository = require("../repository/topicRepository");
+const topicRepository = require("../repository/categoryRepository");
 
 const getAllTopics = async () => {
     return await topicRepository.findAll();

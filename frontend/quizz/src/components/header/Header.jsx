@@ -15,6 +15,7 @@ function Header() {
             link: "/"
         },
         { name: "My Stats", link: "/stats" },
+        { name: "Dashboard", link: "/admin/dashboard" },
     ];
 
     return (
@@ -23,7 +24,7 @@ function Header() {
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-3">
                     {/* <Image src="/icon--logo-lg.png" alt="logo" width={40} height={40} /> */}
-                    <h1 className="text-2xl font-bold text-blue-500">Quizz</h1>
+                    <h1 className="text-2xl font-bold text-[var(--background-primary)]">Quizizz</h1>
                 </Link>
 
                 {/* Menu */}

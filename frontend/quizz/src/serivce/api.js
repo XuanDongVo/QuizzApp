@@ -1,12 +1,16 @@
 import axios from 'axios';
 
-export const baseUrl = 'http://localhost:4000';
 
+
+const baseUrl = process.env.NEXT_PUBLIC_BUILD_MODE === 'production' ? process.env.NEXT_PUBLIC_CLIENT_URL : 'http://localhost:4000';
+
+// Tạo instance axios với baseURL là API route
 export const api = axios.create({
     baseURL: baseUrl,
     withCredentials: true,
 });
 
+// Giữ nguyên interceptor để xử lý token
 api.interceptors.request.use(
     (config) => {
         if (typeof window !== 'undefined') {
@@ -23,6 +27,7 @@ api.interceptors.request.use(
     }
 );
 
+// Giữ nguyên interceptor để xử lý lỗi 401/403
 api.interceptors.response.use(
     (response) => response,
     async (error) => {
