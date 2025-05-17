@@ -13,28 +13,34 @@ const QuizzMain = React.memo(({ quizzId }) => {
 
     const router = useRouter();
     const handleAddQuestion = () => {
-        router.push(`created`);
+        router.push(`/created`);
     };
 
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            const fetchQuizz = async () => {
-                setLoading(true);
-                const response = await getQuizzById(quizzId);
-                if (response.status === 200) {
-                    const quizzData = response.data;
-                    setQuizz(quizzData);
-                } else {
-                    console.error('Failed to fetch quizz data:', response.statusText);
-                }
-                setLoading(false);
-            };
+const timer = setTimeout(() => {
+    const fetchQuizz = async () => {
+        setLoading(true);
+        try {
+            const response = await getQuizzById(quizzId);
+            if (response.status === 200 && response.data?.id !== quizz?.id) {
+                const quizzData = response.data;
+                setQuizz(quizzData);
+            } else {
+                console.error('Failed to fetch quizz data or same ID:', 
+                    response.statusText || 'Quizz ID unchanged');
+            }
+        } catch (error) {
+            console.error('Error fetching quizz:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+    fetchQuizz();
+}, 500);
 
-            fetchQuizz();
-        }, 500);
-
-        return () => clearTimeout(timer);
+// Nhớ clear timeout khi component unmount
+return () => clearTimeout(timer);
     }, [quizzId]);
 
     if (loading) {
@@ -146,7 +152,7 @@ const QuizzMain = React.memo(({ quizzId }) => {
                     </div>
 
                     {/* Add Question Button (Bottom) */}
-                    {quizz?.length > 0 && (
+                    {quizz?.questions?.length > 0 && (
                         <div className="flex justify-center mt-8">
                             <button
                                 onClick={handleAddQuestion}
