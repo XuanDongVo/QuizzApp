@@ -11,14 +11,14 @@ const QuizzMain = React.memo(({ quizzId }) => {
     const { quizz, deleteQuestion, setQuizz } = useCreatedQuizzContext();
     const router = useRouter();
     const handleAddQuestion = () => {
-        router.push(`created`);
+        router.push(`/created`);
     };
 
 
     useEffect(() => {
         const fetchQuizz = async () => {
             const response = await getQuizzById(quizzId);
-            if (response.status === 200) {
+            if (response.status === 200 && response.data?.id !== quizz?.id) {
                 const quizzData = response.data;
                 setQuizz(quizzData);
             } else {
@@ -126,7 +126,7 @@ const QuizzMain = React.memo(({ quizzId }) => {
                     </div>
 
                     {/* Add Question Button (Bottom) */}
-                    {quizz?.length > 0 && (
+                    {quizz?.questions?.length > 0 && (
                         <div className="flex justify-center mt-8">
                             <button
                                 onClick={handleAddQuestion}
