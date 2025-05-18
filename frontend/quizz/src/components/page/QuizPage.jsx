@@ -2,7 +2,7 @@
 import QuizAnswers from "@/components/quizVoyage/quizAnswers/QuizAnswers";
 import QuizQuestions from "@/components/quizVoyage/quizQuestion/QuizQuestions";
 import { useQuizContext } from "@/context/quizzContext";
-
+// 3.1.5 quizPage hiển thị câu hỏi
 export default function QuizPage({ quizData, quizzId, isPreview }) {
     const { currentQuestionIndex } = useQuizContext();
 
