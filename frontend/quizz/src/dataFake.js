@@ -25,7 +25,28 @@ export const categories = [
             { question: "What is the greatest common divisor of 12 and 18?", options: ["6", "9", "3", "12"], correctAnswer: "6" },
             { question: "What is the lowest common multiple of 3 and 5?", options: ["15", "10", "12", "30"], correctAnswer: "15" },
             { question: "What is the sum of the first 10 prime numbers?", options: ["129", "100", "150", "115"], correctAnswer: "129" },
-            { question: "What is the formula for the area of a triangle?", options: ["(base x height) / 2", "(length x width)", "πr^2", "side^2"], correctAnswer: "(base x height) / 2" }
+            { question: "What is the formula for the area of a triangle?", options: ["(base x height) / 2", "(length x width)", "πr^2", "side^2"], correctAnswer: "(base x height) / 2" },
+            { question: "What is the solution to the equation 2x + 3 = 7?", options: ["1", "2", "3", "4"], correctAnswer: "2" },
+            { question: "What is the next prime number after 7?", options: ["9", "10", "11", "13"], correctAnswer: "11" },
+            { question: "What is the quadratic formula?", options: ["(-b ± √(b²-4ac))/2a", "a^2 + b^2 = c^2", "πr^2", "s^2"], correctAnswer: "(-b ± √(b²-4ac))/2a" },
+            { question: "What is 7 squared?", options: ["49", "14", "21", "77"], correctAnswer: "49" },
+            { question: "What is the median of the numbers [3, 5, 7]?", options: ["5", "4", "6", "3"], correctAnswer: "5" },
+            { question: "What is the mode of [2, 3, 4, 4, 5]?", options: ["4", "3", "2", "5"], correctAnswer: "4" },
+            { question: "What is the slope of the line y = 2x + 1?", options: ["2", "1", "-2", "0"], correctAnswer: "2" },
+            { question: "What is the probability of getting heads in a fair coin flip?", options: ["1/2", "1/3", "1/4", "1"], correctAnswer: "1/2" },
+            { question: "How many degrees are in a full circle?", options: ["360", "180", "90", "540"], correctAnswer: "360" },
+            { question: "What is the logarithm base 10 of 1000?", options: ["3", "10", "1", "100"], correctAnswer: "3" },
+            { question: "What is the result of 2^5?", options: ["32", "16", "64", "25"], correctAnswer: "32" },
+            { question: "What is the circumference of a circle with radius 7?", options: ["43.96", "49", "22", "14"], correctAnswer: "43.96" },
+            { question: "What is the solution to x^2 - 4 = 0?", options: ["2 and -2", "4 and -4", "2", "0"], correctAnswer: "2 and -2" },
+            { question: "What is the standard deviation a measure of?", options: ["Spread of data", "Mean", "Median", "Range"], correctAnswer: "Spread of data" },
+            { question: "What is the inverse of the function y = 3x?", options: ["x/3", "3x", "-3x", "x+3"], correctAnswer: "x/3" },
+            { question: "What is 1/3 as a decimal?", options: ["0.333", "0.3", "0.13", "0.25"], correctAnswer: "0.333" },
+            { question: "What is the binomial coefficient C(5, 2)?", options: ["10", "15", "5", "20"], correctAnswer: "10" },
+            { question: "What is the angle between the hands of a clock at 3:00?", options: ["90 degrees", "180 degrees", "60 degrees", "45 degrees"], correctAnswer: "90 degrees" },
+            { question: "What is tan(45°)?", options: ["1", "0", "∞", "√2"], correctAnswer: "1" },
+            { question: "What is the limit of (1 + 1/n)^n as n approaches infinity?", options: ["e", "1", "∞", "0"], correctAnswer: "e" }
+            
         ]
     },
     {
@@ -53,7 +74,18 @@ export const categories = [
             { question: "What is the name of the galaxy we live in?", options: ["Andromeda", "Milky Way", "Solar System", "Whirlpool"], correctAnswer: "Milky Way" },
             { question: "Which of these is a mammal?", options: ["Shark", "Eagle", "Lion", "Penguin"], correctAnswer: "Lion" },
             { question: "Which of these is a renewable energy source?", options: ["Coal", "Natural Gas", "Wind", "Nuclear"], correctAnswer: "Wind" },
-            { question: "What is the smallest unit of matter?", options: ["Atom", "Molecule", "Electron", "Proton"], correctAnswer: "Atom" }
+            { question: "What is the smallest unit of matter?", options: ["Atom", "Molecule", "Electron", "Proton"], correctAnswer: "Atom" },
+            { question: "What gas do plants absorb from the atmosphere?", options: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"], correctAnswer: "Carbon Dioxide" },
+            { question: "What is the basic unit of heredity?", options: ["Gene", "Chromosome", "Cell", "Protein"], correctAnswer: "Gene" },
+            { question: "What organelle is known as the powerhouse of the cell?", options: ["Nucleus", "Mitochondria", "Ribosome", "Chloroplast"], correctAnswer: "Mitochondria" },
+            { question: "What is the pH level of a neutral substance?", options: ["7", "0", "14", "10"], correctAnswer: "7" },
+            { question: "Which state of matter has a definite volume but no definite shape?", options: ["Solid", "Liquid", "Gas", "Plasma"], correctAnswer: "Liquid" },
+            { question: "Which part of the cell contains genetic material?", options: ["Cytoplasm", "Nucleus", "Mitochondria", "Cell wall"], correctAnswer: "Nucleus" },
+            { question: "Which scientist is famous for the laws of motion?", options: ["Isaac Newton", "Albert Einstein", "Marie Curie", "Charles Darwin"], correctAnswer: "Isaac Newton" },
+            { question: "Which blood type is known as the universal donor?", options: ["O-", "A+", "B-", "AB+"], correctAnswer: "O-" },
+            { question: "What is the hardest natural substance on Earth?", options: ["Diamond", "Quartz", "Iron", "Gold"], correctAnswer: "Diamond" },
+            { question: "What is the speed of light in vacuum?", options: ["299,792,458 m/s", "150,000,000 m/s", "3,000,000 m/s", "1,000,000 m/s"], correctAnswer: "299,792,458 m/s" }
+
         ]
     },
     {
@@ -75,7 +107,18 @@ export const categories = [
             { question: "What year did the Berlin Wall fall?", options: ["1989", "1991", "1979", "1961"], correctAnswer: "1989" },
             { question: "Which battle is considered the turning point of the American Civil War?", options: ["Battle of Gettysburg", "Battle of Antietam", "Battle of Fort Sumter", "Battle of Bull Run"], correctAnswer: "Battle of Gettysburg" },
             { question: "Who was the famous leader of the Indian independence movement?", options: ["Jawaharlal Nehru", "Mahatma Gandhi", "Subhas Chandra Bose", "Indira Gandhi"], correctAnswer: "Mahatma Gandhi" },
-            { question: "Who was the first emperor of Rome?", options: ["Augustus", "Julius Caesar", "Nero", "Caligula"], correctAnswer: "Augustus" }
+            { question: "Who was the first emperor of Rome?", options: ["Augustus", "Julius Caesar", "Nero", "Caligula"], correctAnswer: "Augustus" },
+            { question: "Which war was triggered by the assassination of Archduke Franz Ferdinand?", options: ["World War I", "World War II", "Vietnam War", "Cold War"], correctAnswer: "World War I" },
+            { question: "Who was the first President of the United States?", options: ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"], correctAnswer: "George Washington" },
+            { question: "What ancient civilization built the pyramids?", options: ["Romans", "Greeks", "Egyptians", "Babylonians"], correctAnswer: "Egyptians" },
+            { question: "In what year did the United Nations officially form?", options: ["1945", "1919", "1939", "1955"], correctAnswer: "1945" },
+            { question: "What wall was built to separate East and West Berlin?", options: ["Berlin Wall", "Iron Curtain", "Great Wall", "Western Wall"], correctAnswer: "Berlin Wall" },
+            { question: "Who was the British Prime Minister during most of World War II?", options: ["Winston Churchill", "Neville Chamberlain", "Margaret Thatcher", "Clement Attlee"], correctAnswer: "Winston Churchill" },
+            { question: "What empire was ruled by Genghis Khan?", options: ["Mongol Empire", "Ottoman Empire", "Roman Empire", "Persian Empire"], correctAnswer: "Mongol Empire" },
+            { question: "What was the name of the policy to stop the spread of communism during the Cold War?", options: ["Containment", "Expansion", "Appeasement", "Isolation"], correctAnswer: "Containment" },
+            { question: "What historical period followed the fall of the Roman Empire?", options: ["Middle Ages", "Renaissance", "Industrial Age", "Age of Enlightenment"], correctAnswer: "Middle Ages" },
+            { question: "Which revolution is known for the storming of the Bastille?", options: ["French Revolution", "Russian Revolution", "American Revolution", "Industrial Revolution"], correctAnswer: "French Revolution" }
+
         ]
     },
     {
@@ -99,7 +142,19 @@ export const categories = [
             { question: "Which city is known as the Big Apple?", options: ["Los Angeles", "New York", "Chicago", "San Francisco"], correctAnswer: "New York" },
             { question: "What is the longest mountain range in the world?", options: ["Andes", "Himalayas", "Rockies", "Alps"], correctAnswer: "Andes" },
             { question: "Which country has the largest economy in the world?", options: ["China", "USA", "India", "Japan"], correctAnswer: "USA" },
-            { question: "Which river flows through Egypt?", options: ["Amazon", "Nile", "Mississippi", "Yangtze"], correctAnswer: "Nile" }
+            { question: "Which river flows through Egypt?", options: ["Amazon", "Nile", "Mississippi", "Yangtze"], correctAnswer: "Nile" },
+            { question: "Which continent has the most countries?", options: ["Asia", "Europe", "Africa", "South America"], correctAnswer: "Africa" },
+            { question: "What is the capital city of Australia?", options: ["Sydney", "Melbourne", "Canberra", "Brisbane"], correctAnswer: "Canberra" },
+            { question: "Which line divides the Earth into the Northern and Southern Hemispheres?", options: ["Equator", "Prime Meridian", "Tropic of Cancer", "Tropic of Capricorn"], correctAnswer: "Equator" },
+            { question: "Which U.S. state is the largest by land area?", options: ["Texas", "California", "Alaska", "Montana"], correctAnswer: "Alaska" },
+            { question: "Which country is both in Europe and Asia?", options: ["Russia", "Greece", "Kazakhstan", "Turkey"], correctAnswer: "Turkey" },
+            { question: "Which ocean lies between Africa and Australia?", options: ["Pacific", "Indian", "Atlantic", "Southern"], correctAnswer: "Indian" },
+            { question: "What is the tallest waterfall in the world?", options: ["Niagara Falls", "Victoria Falls", "Angel Falls", "Yosemite Falls"], correctAnswer: "Angel Falls" },
+            { question: "Which country is famous for its fjords?", options: ["Sweden", "Norway", "Denmark", "Iceland"], correctAnswer: "Norway" },
+            { question: "What is the driest place on Earth?", options: ["Sahara Desert", "Gobi Desert", "Atacama Desert", "Antarctica"], correctAnswer: "Atacama Desert" },
+            { question: "Which continent has the fewest countries?", options: ["Europe", "South America", "Australia", "North America"], correctAnswer: "Australia" }
+
+
         ]
     },
     {
@@ -120,7 +175,18 @@ export const categories = [
             { question: "Which of these is a version control system?", options: ["Git", "Windows", "MacOS", "Java"], correctAnswer: "Git" },
             { question: "What is an IP address?", options: ["A unique identifier for a computer on a network", "A type of virus", "A programming language", "A computer hardware"], correctAnswer: "A unique identifier for a computer on a network" },
             { question: "What is an example of a high-level programming language?", options: ["C", "Assembly", "Python", "Machine Language"], correctAnswer: "Python" },
-            { question: "Which of the following is an open-source operating system?", options: ["Windows", "MacOS", "Linux", "iOS"], correctAnswer: "Linux" }
+            { question: "Which of the following is an open-source operating system?", options: ["Windows", "MacOS", "Linux", "iOS"], correctAnswer: "Linux" },
+            { question: "What does HTTP stand for?", options: ["HyperText Transfer Protocol", "HyperText Transmission Program", "High Transfer Text Protocol", "Hyper Transfer Text Process"], correctAnswer: "HyperText Transfer Protocol" },
+            { question: "Which data structure uses LIFO (Last In, First Out)?", options: ["Queue", "Stack", "Array", "Linked List"], correctAnswer: "Stack" },
+            { question: "Which logic gate returns true only if both inputs are true?", options: ["OR", "XOR", "AND", "NOT"], correctAnswer: "AND" },
+            { question: "What is the binary representation of the decimal number 5?", options: ["101", "110", "100", "111"], correctAnswer: "101" },
+            { question: "What is the full form of URL?", options: ["Universal Resource Locator", "Uniform Resource Locator", "Unified Routing Link", "Universal Routing Locator"], correctAnswer: "Uniform Resource Locator" },
+            { question: "What is the term for an error in a program?", options: ["Bug", "Glitch", "Crash", "Syntax"], correctAnswer: "Bug" },
+            { question: "Which part of the computer carries out arithmetic and logic operations?", options: ["ALU", "CU", "RAM", "ROM"], correctAnswer: "ALU" },
+            { question: "Which sorting algorithm has the best average-case performance?", options: ["Bubble Sort", "Selection Sort", "Merge Sort", "Insertion Sort"], correctAnswer: "Merge Sort" },
+            { question: "What is the primary function of the compiler?", options: ["Convert high-level code to machine code", "Store data", "Control memory", "Manage files"], correctAnswer: "Convert high-level code to machine code" },
+            { question: "Which protocol is used to send emails?", options: ["HTTP", "SMTP", "FTP", "TCP"], correctAnswer: "SMTP" }
+
         ]
     },
     {
@@ -145,7 +211,18 @@ export const categories = [
             { question: "What is the principle of object-oriented programming?", options: ["Encapsulation, Inheritance, Polymorphism, and Abstraction", "Sorting, Searching, and Iteration", "Input, Output, and Storage", "None of the above"], correctAnswer: "Encapsulation, Inheritance, Polymorphism, and Abstraction" },
             { question: "Which of the following is not an example of a programming paradigm?", options: ["Imperative", "Functional", "Object-Oriented", "Hardware"], correctAnswer: "Hardware" },
             { question: "What is the purpose of an API?", options: ["To manage memory", "To allow communication between different software components", "To optimize the speed of an application", "To compile code"], correctAnswer: "To allow communication between different software components" },
-            { question: "What is the difference between a class and an object?", options: ["A class is a template; an object is an instance of a class", "A class is a function; an object is a variable", "A class is a type of loop; an object is a function", "A class is a type of algorithm; an object is a program"], correctAnswer: "A class is a template; an object is an instance of a class" }
+            { question: "What is the difference between a class and an object?", options: ["A class is a template; an object is an instance of a class", "A class is a function; an object is a variable", "A class is a type of loop; an object is a function", "A class is a type of algorithm; an object is a program"], correctAnswer: "A class is a template; an object is an instance of a class" },
+            { question: "Which sorting algorithm is the most efficient in average-case for large datasets?", options: ["Bubble Sort", "Insertion Sort", "Quick Sort", "Selection Sort"], correctAnswer: "Quick Sort" },
+            { question: "In databases, what does ACID stand for?", options: ["Atomicity, Consistency, Isolation, Durability", "Accuracy, Capacity, Integrity, Durability", "Access, Control, Isolation, Dependency", "All Computations In Data"], correctAnswer: "Atomicity, Consistency, Isolation, Durability" },
+            { question: "What is dynamic programming used for?", options: ["To solve problems by breaking them into overlapping subproblems", "To dynamically allocate memory", "To compile programs faster", "To write multi-threaded code"], correctAnswer: "To solve problems by breaking them into overlapping subproblems" },
+            { question: "Which data structure is used to implement recursion?", options: ["Queue", "Heap", "Stack", "Tree"], correctAnswer: "Stack" },
+            { question: "What is the purpose of the OSI model in networking?", options: ["To standardize communication functions of a network", "To protect against cyber attacks", "To increase bandwidth", "To implement DNS resolution"], correctAnswer: "To standardize communication functions of a network" },
+            { question: "What is tail recursion?", options: ["A recursive call that is the last operation in a function", "A function with no base case", "A recursive function with multiple returns", "A recursion that creates a circular call stack"], correctAnswer: "A recursive call that is the last operation in a function" },
+            { question: "Which complexity class does NP-complete belong to?", options: ["Problems that are solvable in polynomial time", "Problems that are undecidable", "Problems verifiable in polynomial time", "Problems solvable in linear time"], correctAnswer: "Problems verifiable in polynomial time" },
+            { question: "What is a mutex used for?", options: ["To prevent race conditions in concurrent programming", "To sort an array", "To compress files", "To allocate memory"], correctAnswer: "To prevent race conditions in concurrent programming" },
+            { question: "Which of the following is a characteristic of functional programming?", options: ["Immutable data", "Class-based inheritance", "Global variables", "Goto statements"], correctAnswer: "Immutable data" },
+            { question: "What does the 'volatile' keyword indicate in programming?", options: ["The variable can be modified asynchronously", "The variable is constant", "The variable is a pointer", "The variable is a type of thread"], correctAnswer: "The variable can be modified asynchronously" }
+
         ]
     }, {
         id: 7,
@@ -162,7 +239,18 @@ export const categories = [
             { question: "Which of these data structures is best for searching an element?", options: ["Linked List", "Hash Table", "Array", "Stack"], correctAnswer: "Hash Table" },
             { question: "What is the space complexity of a singly linked list?", options: ["O(1)", "O(n)", "O(n log n)", "O(log n)"], correctAnswer: "O(n)" },
             { question: "What is the main advantage of a doubly linked list over a singly linked list?", options: ["Faster insertions", "Easier access to previous elements", "Lower memory usage", "No need to manage pointers"], correctAnswer: "Easier access to previous elements" },
-            { question: "Which data structure is used to represent a graph?", options: ["Stack", "Queue", "Linked List", "Adjacency Matrix"], correctAnswer: "Adjacency Matrix" }
+            { question: "Which data structure is used to represent a graph?", options: ["Stack", "Queue", "Linked List", "Adjacency Matrix"], correctAnswer: "Adjacency Matrix" },
+            { question: "What is the worst-case time complexity of searching in a binary search tree (BST)?", options: ["O(log n)", "O(1)", "O(n)", "O(n log n)"], correctAnswer: "O(n)" },
+            { question: "Which data structure is optimal for implementing a priority queue?", options: ["Stack", "Array", "Hash Map", "Heap"], correctAnswer: "Heap" },
+            { question: "What is the key feature of a self-balancing binary search tree?", options: ["Keeps height minimal for efficiency", "Stores data in key-value pairs", "Allows duplicate keys", "Is always a complete binary tree"], correctAnswer: "Keeps height minimal for efficiency" },
+            { question: "What is the difference between a tree and a graph?", options: ["A tree is a special type of graph with no cycles", "A graph is always binary", "Trees store data sequentially", "Graphs require sorted data"], correctAnswer: "A tree is a special type of graph with no cycles" },
+            { question: "What is a Trie mainly used for?", options: ["Efficient string retrieval", "Sorting data", "Implementing queues", "Storing integers"], correctAnswer: "Efficient string retrieval" },
+            { question: "Which traversal method visits the root node before its children in a binary tree?", options: ["In-order", "Post-order", "Pre-order", "Level-order"], correctAnswer: "Pre-order" },
+            { question: "In a max-heap, what is the value at the root node?", options: ["The smallest value", "The median value", "The largest value", "Depends on the implementation"], correctAnswer: "The largest value" },
+            { question: "What is the adjacency list representation of a graph?", options: ["A matrix that lists all connections", "A list where each node stores its connected nodes", "A tree structure of vertices", "A hash table of graphs"], correctAnswer: "A list where each node stores its connected nodes" },
+            { question: "Which data structure is most efficient for checking whether an element exists in a set?", options: ["Array", "Stack", "Hash Set", "Queue"], correctAnswer: "Hash Set" },
+            { question: "Which operation is more efficient in a linked list compared to an array?", options: ["Random access", "Memory allocation", "Insertion/deletion at head", "Sorting"], correctAnswer: "Insertion/deletion at head" }
+
         ]
     }
 ]
