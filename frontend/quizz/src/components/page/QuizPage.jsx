@@ -2,10 +2,11 @@
 import QuizAnswers from "@/components/quizVoyage/quizAnswers/QuizAnswers";
 import QuizQuestions from "@/components/quizVoyage/quizQuestion/QuizQuestions";
 import { useQuizContext } from "@/context/quizzContext";
-// 3.1.5 quizPage hiển thị câu hỏi
-export default function QuizPage({ quizData, quizzId, isPreview }) {
-    const { currentQuestionIndex } = useQuizContext();
 
+export default function QuizPage({ quizData, quizzId, isPreview }) {
+    //   3.1.7 Lấy  câu hỏi hiện tại
+    const { currentQuestionIndex } = useQuizContext();
+    // 3.1.8  Hiển thị câu hỏi hiện tại
     return (
         <div
             className="flex flex-col h-screen"

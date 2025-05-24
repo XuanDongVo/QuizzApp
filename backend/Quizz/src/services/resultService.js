@@ -1,5 +1,5 @@
 const resultRepository = require("../repository/resultRepository");
-
+// lưu quiz xuống db
 const saveQuizResult = async (userId, quizzId, score, totalQuestions, correctAnswers, incorrectAnswers) => {
     if (!userId || !quizzId) {
         throw new Error("User ID and Quizz ID are required");

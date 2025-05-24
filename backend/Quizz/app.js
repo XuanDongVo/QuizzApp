@@ -12,11 +12,13 @@ app.use(cors(corsOptions));
 const questionRoute = require("./src/routes/question");
 const openAiRoute = require("./src/routes/openAi");
 const quizzRoute = require("./src/routes/quizz");
+const resultRoute= require("./src/routes/resultRoute")
 
 // Sử dụng routes
 app.use("/question", questionRoute);
 app.use("/openai", openAiRoute);
 app.use("/quizz", quizzRoute);
+app.use("/results", resultRoute);
 
 // Kết nối cơ sở dữ liệu và khởi động server
 const PORT = process.env.PORT || 3000;

@@ -25,8 +25,8 @@ export const QuizProvider = ({ children }) => {
         }
 
     }
-// 3.1.8 Kiểm tra xem còn câu hỏi không
-            // 	Còn: hiện câu kế tiếp
+// 3.1.11 Kiểm tra xem còn câu hỏi không
+            // 	Còn: Chuyển sang câu hỏi kế tiếp
             // 	Hết: lưu kết quả, chuyển đến trang game-finnish
     const nextQuestion = async  (totalQuestions, categoryId, isPreview, quizzId) => {
         if (currentQuestionIndex < totalQuestions - 1) {
