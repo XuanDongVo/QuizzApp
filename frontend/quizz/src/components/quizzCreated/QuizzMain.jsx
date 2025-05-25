@@ -14,7 +14,7 @@ const QuizzMain = React.memo(({ quizzId }) => {
     const router = useRouter();
     {/* 2.1.15.QuizzMain điều hướng bạn sang trang tạo câu hỏi (QuizzEdit). */ }
     const handleAddQuestion = () => {
-        router.push(`/created`);
+        router.push(`created`);
     };
 
 
