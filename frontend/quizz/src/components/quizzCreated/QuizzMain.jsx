@@ -14,7 +14,7 @@ const QuizzMain = React.memo(({ quizzId }) => {
     const router = useRouter();
     {/* 2.1.15.QuizzMain điều hướng bạn sang trang tạo câu hỏi (QuizzEdit). */ }
     const handleAddQuestion = () => {
-        router.push(`created`);
+        router.push(`/created`);
     };
 
 
@@ -36,6 +36,7 @@ const QuizzMain = React.memo(({ quizzId }) => {
             fetchQuizz();
         }, 500);
 
+        // Nhớ clear timeout khi component unmount
         return () => clearTimeout(timer);
     }, [quizzId]);
 
@@ -145,7 +146,7 @@ const QuizzMain = React.memo(({ quizzId }) => {
                     </div>
 
                     {/* Add Question Button (Bottom) */}
-                    {quizz?.length > 0 && (
+                    {quizz?.questions?.length > 0 && (
                         <div className="flex justify-center mt-8">
                             <button
                                 onClick={handleAddQuestion}
