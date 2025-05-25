@@ -1,6 +1,7 @@
 const { ObjectId } = require("mongodb");
 const { GET_DB } = require("../config/mongoConfig");
 
+{/* trả về đối tượng quizz */ }
 const getQuizzById = async (quizzId) => {
     const db = GET_DB();
     const quizz = await db.collection("quizz").findOne({ _id: new ObjectId(quizzId) });
@@ -21,10 +22,13 @@ const createdQuizz = async (name) => {
         name: name,
         publish: false,
     };
+    {/*2.1.9.QuizzRepository lưu lại quizz. */ }
     const result = await db.collection("quizz").insertOne(newQuizz);
+    {/*2.1.10.	QuizzRepository trả về id, name, publish (trạng thái quizz) cho quizz.js(BE).*/ }
     return {
         id: result.insertedId,
-        name: newQuizz.name
+        name: newQuizz.name,
+        publish: false
     };
 };
 

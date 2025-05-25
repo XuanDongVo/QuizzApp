@@ -33,11 +33,13 @@ const QuizzHeader = () => {
         router.push('preview');
     }
 
+    {/* 2.1.36 QuizzHeader thực hiện hàm togglePublish để thực hiện lưu lại quizz cho người dùng. */ }
     const togglePublish = async () => {
         const newPublishStatus = !quizz?.publish;
-        console.log('Toggling publish status to:', newPublishStatus);
+        {/* 2.1.37 QuizzHeader gọi hàm updateQuizzPublishStatus để cập nhật trạng thái publish của quizz. */ }
         const response = await updateQuizzPublishStatus(quizz?._id, newPublishStatus);
         if (response.status === 200) {
+            {/*2.1.42	QuizzHeader cập nhật lại trạng thái Quizz của người dùng để biết quizz này đang được publish hay chưa publish. */ }
             setQuizz({ ...quizz, publish: newPublishStatus });
         } else {
             console.error('Failed to update publish status:', response.statusText);
@@ -66,6 +68,8 @@ const QuizzHeader = () => {
                     <button className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded transition" onClick={handlePreview}>
                         PREVIEW
                     </button>
+
+                    {/* 2.1.35 Người dùng nhấn button 'PUBLISH' ở QuizzHeader để lưu quizz và hiển thị quizz ra cho người dùng khác có thể làm.*/}
                     <button
                         onClick={togglePublish}
                         className={`px-4 py-2 rounded transition font-semibold ${quizz?.publish

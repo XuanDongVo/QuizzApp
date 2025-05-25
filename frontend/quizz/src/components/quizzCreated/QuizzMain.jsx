@@ -12,6 +12,7 @@ const QuizzMain = React.memo(({ quizzId }) => {
     const [loading, setLoading] = React.useState(true);
 
     const router = useRouter();
+    {/* 2.1.15.QuizzMain điều hướng bạn sang trang tạo câu hỏi (QuizzEdit). */ }
     const handleAddQuestion = () => {
         router.push(`created`);
     };
@@ -21,6 +22,7 @@ const QuizzMain = React.memo(({ quizzId }) => {
         const timer = setTimeout(() => {
             const fetchQuizz = async () => {
                 setLoading(true);
+                {/* 2.1.13 QuizzMain gọi hàm để lấy ra Quizz vừa khởi tạo. */ }
                 const response = await getQuizzById(quizzId);
                 if (response.status === 200) {
                     const quizzData = response.data;
@@ -44,7 +46,6 @@ const QuizzMain = React.memo(({ quizzId }) => {
                     <div className="absolute inset-0 border-4 border-[var(--background-primary)] border-t-transparent rounded-full animate-spin"></div>
                     <div className="absolute inset-1 bg-white rounded-full"></div>
                 </div>
-                {/* <p className="mt-4 text-gray-600 text-lg animate-pulse">Đang tải dữ liệu câu hỏi...</p> */}
             </div>
         );
     }
@@ -54,16 +55,14 @@ const QuizzMain = React.memo(({ quizzId }) => {
 
             <QuizzHeader />
             <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 py-6 px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-
                 <div className="max-w-6xl mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8">
-
-
                     {/* Title and Add Question Button */}
                     <div className="flex flex-col sm:flex-row sm:justify-between items-center pb-4 pt-6 border-b border-gray-200">
                         <h2 className="text-2xl font-bold text-gray-800 mb-4 sm:mb-0">
                             {quizz?.questions?.length || 0} Question
                         </h2>
+
+                        {/* 2.1.14 Người dùng nhấn nút button ‘add question’ để tạo câu hỏi. */}
                         <button
                             onClick={handleAddQuestion}
                             className="px-4 py-2 bg-[var(--background-primary)] text-white rounded-lg hover:bg-[var(--background-primary)]/80 transition-colors duration-200 cursor-pointer"
