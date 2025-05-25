@@ -39,10 +39,22 @@ const QuizzEdit = ({ quizzId, question, onClick }) => {
         }
     };
 
+
+    {/* 2.1.24.QuizzEdit hiện thực hàm lưu câu hỏi  */ }
     const handleSavedQuestion = async () => {
+        {/* 2.2.25 Trước khi lưu câu hỏi, hệ thống kiểm tra có câu hỏi được nhập chưa. */ }
         if (!currentQuestion.trim()) {
             setQuestionError(true);
+            {/* 2.2.26 Nếu chưa có, hệ thống focus vào ô nhập câu hỏi. */ }
             questionRef.current?.focus();
+            return;
+        }
+
+        {/* 2.2.27 QuizzEdit kiểm tra người dùng đã chọn đáp án đúng chưa. */ }
+        if (!correctAnswer) {
+            setQuestionError(true);
+            {/* 2.2.28 Nếu để trống, hiển thị thông báo: “Please select a correct answer”. */ }
+            alert('Please select a correct answer');
             return;
         }
 
@@ -57,13 +69,12 @@ const QuizzEdit = ({ quizzId, question, onClick }) => {
         if (question) {
             updateQuestion(question.id, updatedData, quizzId);
         } else {
+            {/* 2.1.25 QuizzEdit gọi hàm addQuestion từ CreatedQuizzContext */ }
             addQuestion({ currentQuestion, answers, correctAnswer: [correctAnswer], quizzId });
         }
 
-        // Gửi toàn bộ questions lên server
-        // await updateAllQuestions(quizzId, quizz.questions);
-
-        onClick(); // Đóng popup hoặc quay về
+        {/* 2.26 QuizzEdit điều hướng người dùng quay lại trang tạo câu hỏi(QuizzMain) */ }
+        onClick();
     };
 
     const removeAnswer = (index) => {
@@ -86,12 +97,14 @@ const QuizzEdit = ({ quizzId, question, onClick }) => {
                             <div
                                 className={`border-1 text-white p-6 sm:p-8 rounded-lg flex items-center justify-center ${questionError ? 'border-red-500' : 'border-white'}`}
                             >
+                                {/* 2.1.16 Người dùng nhập câu hỏi của mình. */}
                                 <input
                                     type="text"
                                     placeholder="Type your question here"
                                     ref={questionRef}
                                     value={currentQuestion}
                                     onChange={(e) => {
+                                        {/* 2.1.17 QuizzEdit lưu lại câu hỏi người dùng. */ }
                                         setQuestion(e.target.value);
                                         setQuestionError(false);
                                     }}
@@ -108,13 +121,15 @@ const QuizzEdit = ({ quizzId, question, onClick }) => {
                                             className="border-2 border-white rounded-lg shadow-md flex items-center justify-center cursor-pointer transition-all duration-500 h-32 min-w-[250px]"
                                             style={{ backgroundColor: colors[index] }}
                                         >
+                                            {/* 2.1.19.Người dùng nhập câu trả lời */}
                                             <input
                                                 type="text"
                                                 placeholder="Type answer option here"
                                                 value={answer}
-                                                onChange={(e) => handleAnswerChange(index, e.target.value)}
+                                                onChange={(e) => handleAnswerChange(index, e.target.value)} //2.1.20.QuizzEdit lưu lại câu trả lời. 
                                                 className="w-full h-full p-4 rounded-lg text-white bg-transparent outline-none placeholder-gray-300 text-center text-base sm:text-lg"
                                             />
+                                            {/* 2.1.21. Người dùng chọn câu trả lời đúng cho câu hỏi */}
                                             <button
                                                 onClick={() => handleCorrectAnswerChange(answer)}
                                                 className={`absolute top-4 left-4 p-1 rounded-full border-1 border-white ${correctAnswer === answer ? 'text-green-400' : 'text-gray-300'
@@ -135,8 +150,10 @@ const QuizzEdit = ({ quizzId, question, onClick }) => {
                                     </div>
                                 ))}
                             </div>
+                            {/* 2.12.1 Nếu vượt quá, hệ thống không cho tạo thêm, ẩn đi nút tạo. */}
                             {answers.length < 5 && (
                                 <div className="flex justify-center p-4" onClick={addAnswer}>
+                                    {/* 2.1.18. Người dùng chọn button ‘add answer option để tạo câu trả lời cho câu hỏi. */}
                                     <button className="px-4 py-2 text-white bg-[var(--background-primary)] rounded hover:bg-[var(--background-primary)]/80 transition duration-300 cursor-pointer">
                                         + Add answer option
                                     </button>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { getQuizzesByPublishStatus } from '@/serivce/quizz';
 
 export default function Page() {
+    // State quản lý tab và dữ liệu quiz
     const [activeTab, setActiveTab] = useState('published');
     const [publishedQuizzes, setPublishedQuizzes] = useState([]);
     const [notPublishedQuizzes, setNotPublishedQuizzes] = useState([]);
@@ -34,7 +35,6 @@ export default function Page() {
     }, []);
 
 
-
     // Xử lý hiệu ứng thanh di chuyển cho tab
     useEffect(() => {
         const activeIndex = activeTab === 'published' ? 0 : 1;
@@ -51,6 +51,7 @@ export default function Page() {
 
 
     const quizzes = activeTab === 'published' ? publishedQuizzes : notPublishedQuizzes;
+//Component phụ
 
     // Hiển thị giao diện loading
     if (loading) {
@@ -64,7 +65,7 @@ export default function Page() {
         );
     }
 
-    // Hiển thị lỗi nếu có
+    // Hiển thị phần lớn lỗi
     if (error) {
         return (
             <div className="p-6 max-w-7xl mx-auto text-center">

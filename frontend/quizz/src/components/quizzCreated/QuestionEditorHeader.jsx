@@ -104,8 +104,9 @@ const QuestionEditorHeader = ({ handleSavedQuestion, handleBack }) => {
 
       {/* Bên phải: Nút Save Question */}
       <div className="flex items-center space-x-2">
+        {/* 2.1.22.	Người dùng nhấn nút "Save question" ở trên thanh điều hướng (QuestionEditorHeader). */}
         <button
-          onClick={handleSaveQuestion}
+          onClick={handleSaveQuestion}    // 2.1.23 QuizzEditorHeader thực hiện hàm lưu câu hỏi do QuizzEdit truyền qua.
           className="flex items-center space-x-1 px-4 py-2 bg-[var(--background-primary)] text-white rounded-md hover:bg-[var(--background-primary)]/80 hover:cursor-pointer"
         >
           <span className="text-sm">Save question</span>

@@ -12,8 +12,9 @@ export const CreatedQuizzProvider = ({ children }) => {
         questions: []
     });
 
-    // Thêm câu hỏi mới
+    // Thêm câu hỏi mới     
     const addQuestion = ({ currentQuestion, answers, correctAnswer, quizzId }) => {
+        {/* 2.1.26 CreatedQuizzContext tạo đối tượng question.*/ }
         const newQuestion = {
             id: Date.now(),
             question: currentQuestion,
@@ -21,6 +22,7 @@ export const CreatedQuizzProvider = ({ children }) => {
             correctAnswer: correctAnswer[0]
         };
 
+        {/* 2.1.27 Thêm Question vào mảng*/ }
         const updatedQuestions = Array.isArray(quizz?.questions)
             ? [...quizz.questions, newQuestion]
             : [newQuestion];
@@ -30,7 +32,7 @@ export const CreatedQuizzProvider = ({ children }) => {
             questions: updatedQuestions
         }));
 
-        // Gửi câu hỏi mới lên server
+        {/*2.1.28	CreatedQuizzContext gọi hàm updateAllQuestions từ quizz.js (FE)*/ }
         updateAllQuestions(quizzId, updatedQuestions)
 
     };

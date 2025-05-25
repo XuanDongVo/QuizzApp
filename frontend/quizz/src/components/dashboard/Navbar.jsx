@@ -33,18 +33,23 @@ const NavBar = () => {
         }
     }, [pathname]);
 
+
+    {/* 2.1.3.Người dùng xác nhận tạo quizz. */ }
     const handleCreateManual = async () => {
         if (quizTitle.trim() === '') {
             setHasError(true);
+            {/* 2.2.4. Hệ thống focus vào input nhập tên quizz. */ }
             inputRef.current?.focus();
             return;
         }
 
         try {
+            {/* 2.1.4 Navbar gọi hàm khởi tạo quizz (createQuizz) từ quizz.js (FE) .*/ }
             const response = await createdQuizz(quizTitle.trim());
             setIsOpenManual(false);
             setQuizTitle('');
             setHasError(false);
+            {/* 2.1.12.	Hệ thống chuyển người dùng đến giao diện tạo câu hỏi cho quiz vừa tạo*/ }
             router.push(`/admin/quizz/${response.data.id}/main`);
         } catch (error) {
             console.error('Error creating quiz:', error);
@@ -103,12 +108,13 @@ const NavBar = () => {
                         </button>
                     </div>
 
+                    {/* 2.1.0 Người dùng chọn chức năng "Create a Quizz" trên thanh navbar */}
                     <div>
                         <button
                             onClick={() => setIsOpenManual(true)}
                             className="bg-[var(--background-primary)] text-white px-4 py-2 rounded-lg hover:bg-[var(--background-primary)]/80 transition duration-300"
                         >
-                            Create a quiz
+                            Create a quizz
                         </button>
                     </div>
                 </div>
@@ -131,6 +137,7 @@ const NavBar = () => {
                 )}
             </nav>
 
+            {/* 2.1.1	Hệ thống hiển thị dialog yêu cầu nhập tên quiz */}
             <Dialog open={isOpenManual} onClose={() => setIsOpenManual(false)} className="relative z-50">
                 <DialogBackdrop className="fixed inset-0 bg-black/50" />
                 <div className="fixed inset-0 flex items-center justify-center p-4">
@@ -138,6 +145,7 @@ const NavBar = () => {
                         <DialogTitle className="text-lg font-bold text-gray-800 mb-4">
                             Enter Quiz Title
                         </DialogTitle>
+                        {/* 2.1.2	Người dùng nhập tên quizz */}
                         <input
                             ref={inputRef}
                             type="text"
