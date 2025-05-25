@@ -29,11 +29,14 @@ const QuizAnswer = ({
         }
     }
 
-
+//3.1.9 User chọn đáp án
     const onAnswerClick = () => {
         if (!selectedOption) {
             setSelectedOption(option);
             handleAnswerClick(isCorrect); // Gọi hàm từ context
+// 3.1.10 Kiểm tra đáp án có đúng không
+//  	Đáp án đúng: tăng điểm
+// Đáp án sai: Hiện đáp án đúng
             if (isCorrect) {
                 increaseScore();
                 setTimeout(() => {

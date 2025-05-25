@@ -25,12 +25,27 @@ export const QuizProvider = ({ children }) => {
         }
 
     }
-
-    const nextQuestion = (totalQuestions, categoryId, isPreview, quizzId) => {
+// 3.1.11 Kiểm tra xem còn câu hỏi không
+            // 	Còn: Chuyển sang câu hỏi kế tiếp
+            // 	Hết: lưu kết quả, chuyển đến trang game-finnish
+    const nextQuestion = async  (totalQuestions, categoryId, isPreview, quizzId) => {
         if (currentQuestionIndex < totalQuestions - 1) {
             setCurrentQuestionIndex((prev) => prev + 1);
             setShowAnswer(false);
         } else {
+             try {
+            await saveResult({
+                quizzId,
+                userId,
+                correct: answerCorrect,
+                incorrect: answerIncorrect,
+                total: totalQuestions,
+                score,
+                createdAt: new Date(),
+            });
+        } catch (err) {
+            console.error("Không thể lưu kết quả:", err);
+        }
             setCurrentQuestionIndex(0);
             setShowAnswer(false);
             if (isPreview) {
@@ -41,7 +56,6 @@ export const QuizProvider = ({ children }) => {
 
         }
     };
-
     const resetQuiz = () => {
         setScore(0);
         setCurrentQuestionIndex(0);
