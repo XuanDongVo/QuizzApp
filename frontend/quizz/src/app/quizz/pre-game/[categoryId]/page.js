@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, use } from 'react'
 import { useQuizContext } from "@/context/quizzContext";
-
+//  trang pre_game 
 export default function Page({ params }) {
     const { quizData, setQuizData, resetQuiz } = useQuizContext();
     const { categoryId } = use(params);
@@ -57,8 +57,9 @@ export default function Page({ params }) {
                                     </div>
                                 </div>
                                 <div className="text-[18px] font-bold text-white text-center">{quizData.questions.length} câu hỏi chuẩn bị</div>
-
+{/*3.1.3 User click nút start game*/}
                                 <Button variant="success">
+                                    {/* 3.1.4 Chuyển sang trang game  */}
                                     <Link href={`/quizz/game`}>
                                         <div className="text-white text-center font-bold">
                                             Start Game
